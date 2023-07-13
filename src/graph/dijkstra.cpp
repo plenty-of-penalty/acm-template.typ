@@ -8,7 +8,7 @@ int n, m, s;
 vector<pair<int, int>> G[N];
 
 namespace dijkstra {
-const long long inf = 4e14;
+const long long inf = 0x6363636363636363;
 long long dis[N];
 priority_queue<pair<long long, int>> q;
 void dij(int s) {
