@@ -7,12 +7,12 @@
 
     header: [
       #locate(loc => {
-        if counter(page).at(loc).at(0) == 1 {
+        if query(selector(heading.where(level: 1)).before(loc), loc).len() == 0 {
           "ACM Template"
         } else {
           counter(heading).display()
           " "
-          query(selector(heading.where(level: 1)).before(loc),loc).last().body
+          query(selector(heading.where(level: 1)).before(loc), loc).last().body
         }
       })
       #v(-0.25em)
@@ -39,12 +39,11 @@
   set par(leading: 0.58em)
 
   align(center)[
-    #block(pad(top: 0.3em, bottom: 1em, text(weight: 700, 1.75em, title)))
+    #block(pad(top: 2em, bottom: 0.5em, text(weight: 700, 1.75em, title)))
   ]
 
   pad(
-    top: 0.3em,
-    bottom: 0.3em,
+    bottom: 2em,
     x: 2em,
     grid(
       columns: (1fr,) * calc.min(3, authors.len()),
