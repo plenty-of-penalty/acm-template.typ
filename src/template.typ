@@ -27,7 +27,7 @@
       "Source Han Serif",
       "Source Han Serif SC VF",
     ),
-    size: 10pt,
+    size: 8.5pt,
     lang: "zh",
   )
 
@@ -67,7 +67,7 @@
 
   show raw.where(block: true): it => {
     let codes = it.text.split("\n")
-    let font = (font: ("Cascadia Code"), size: 0.95em)
+    let font = (font: ("Cascadia Code"), size: 1.05em)
   
     set text(..font)
     
