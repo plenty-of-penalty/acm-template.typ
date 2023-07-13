@@ -55,5 +55,26 @@
   set par(justify: true)
   show: columns.with(2, gutter: 1em)
 
+  show raw.where(block: true): it => {
+    set par(justify: false)
+
+    let codes = it.text.split("\n")
+    grid(
+      columns: (100%, 98%),
+      column-gutter: -98%,
+      block(width: 98%, inset: 1em, for i in range(codes.len()) {
+        box(width: 0pt, align(right, text(
+          style: "italic",
+          size: 6.5pt,
+          fill: rgb("#a0a0a0"),
+          str(i + 1) + h(0em)
+        )))
+        hide(codes.at(i))
+        linebreak()
+      }),
+      block(width: 100%, inset: 1em, it),
+    )
+  }
+
   body
 }
