@@ -21,11 +21,15 @@
     header-ascent: 30%,
   )
 
-  set text(font: (
-    "New Computer Modern",
-    "Source Han Serif",
-    "Source Han Serif SC VF",
-  ), lang: "zh")
+  set text(
+    font: (
+      "New Computer Modern",
+      "Source Han Serif",
+      "Source Han Serif SC VF",
+    ),
+    size: 10pt,
+    lang: "zh",
+  )
 
   show math.equation: set text(weight: 400)
 
@@ -89,24 +93,38 @@
 }
 
 
-
-#let importCode(file, namespace, lang: "cpp") = {
+#let importCode(file, namespace: none, lang: "cpp") = {
   let source_code = read(file)
   let code = ""
+  let note = ""
   let flag = false
+  let firstlines = true
 
   for line in source_code.split("\n") {
-    if line == ("} // namespace " + namespace) {
+    if namespace != none and line == ("} // namespace " + namespace) {
       flag = false
     }
-    if flag {
-      code += line + "\n"
+    if namespace == none or flag {
+      if firstlines and line.starts-with("// ") {
+        note += line.slice(3) + "\n"
+      } else {
+        code += line + "\n"
+        firstlines = false
+      }
     }
-    if line == ("namespace " + namespace + " {") {
+    if namespace != none and line == ("namespace " + namespace + " {") {
       flag = true
     }
   }
-  code = code.slice(0, code.len() - 1)
 
+  if note.len() > 0 {
+    block(note)
+  }
+
+  if code.len() > 0 {
+    code = code.slice(0, code.len() - 1)
+  } else {
+    code = "// no code"
+  }
   raw(lang: lang, block: true, code)
 }
