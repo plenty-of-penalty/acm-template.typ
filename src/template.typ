@@ -1,23 +1,32 @@
-// The project function defines how your document looks.
-// It takes your content and some metadata and formats it.
-// Go ahead and customize it to your liking!
 #let project(title: "", authors: (), body) = {
-  // Set the document's basic properties.
   set document(author: authors, title: title)
   set page(
     margin: (left: 10mm, right: 10mm, top: 15mm, bottom: 15mm),
     numbering: "1",
     number-align: center,
+
+    header: [
+      #locate(loc => {
+        if counter(page).at(loc).at(0) == 1 {
+          "ACM Template"
+        } else {
+          counter(heading).display()
+          " "
+          query(selector(heading.where(level: 1)).before(loc),loc).last().body
+        }
+      })
+      #v(-0.25em)
+      #line(length: 100%, stroke: 0.5pt)
+    ],
+    header-ascent: 30%,
   )
   set text(font: "New Computer Modern", lang: "en")
   show math.equation: set text(weight: 400)
 
-  // Set paragraph spacing.
   show par: set block(above: 0.75em, below: 0.75em)
 
   set heading(numbering: "1.1")
 
-  // Set run-in subheadings, starting at level 3.
   show heading: it => {
     if it.level > 2 {
       parbreak()
@@ -29,12 +38,10 @@
 
   set par(leading: 0.58em)
 
-  // Title row.
   align(center)[
     #block(pad(top: 0.3em, bottom: 1em, text(weight: 700, 1.75em, title)))
   ]
 
-  // Author information.
   pad(
     top: 0.3em,
     bottom: 0.3em,
@@ -46,7 +53,6 @@
     ),
   )
 
-  // Main body.
   set par(justify: true)
   show: columns.with(2, gutter: 1em)
 
