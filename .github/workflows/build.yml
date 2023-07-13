@@ -49,6 +49,10 @@ jobs:
         with:
           name: '${{ github.ref_name }} — ${{ env.DATE }}'
           files: main.pdf
+          options: |
+            --font-path
+            fonts/
+            -vv
 
       - name: Build Pages with Jekyll
         uses: actions/jekyll-build-pages@v1
