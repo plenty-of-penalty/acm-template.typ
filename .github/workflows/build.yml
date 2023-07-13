@@ -27,7 +27,9 @@ jobs:
         uses: lvignoli/typst-action@main
         with:
           source_file: src/main.typ
-          options: --font-path ./fonts/
+          options: |
+            --font-path
+            fonts
 
       - name: Check existence of output file
         run: |
