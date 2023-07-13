@@ -27,6 +27,11 @@ jobs:
         uses: lvignoli/typst-action@main
         with:
           source_file: src/main.typ
+          options: --font-path ./fonts/
+
+      - name: Check existence of output file
+        run: |
+          test -e "src/main.pdf"
 
       - name: Move PDF file
         run: |
@@ -49,7 +54,6 @@ jobs:
         with:
           name: '${{ github.ref_name }} — ${{ env.DATE }}'
           files: main.pdf
-          options: --font-path ./fonts/
 
       - name: Build Pages with Jekyll
         uses: actions/jekyll-build-pages@v1
