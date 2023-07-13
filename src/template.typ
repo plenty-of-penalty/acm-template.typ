@@ -23,6 +23,7 @@
 
   set text(font: (
     "New Computer Modern",
+    "STSong",
     "Source Han Serif SC VF",
   ), lang: "zh")
 
