@@ -20,10 +20,12 @@
     ],
     header-ascent: 30%,
   )
+
   set text(font: (
     "New Computer Modern",
     "Source Han Serif SC VF",
   ), lang: "zh")
+
   show math.equation: set text(weight: 400)
 
   show par: set block(above: 0.75em, below: 0.75em)
@@ -83,4 +85,27 @@
   }
 
   body
+}
+
+
+
+#let importCode(file, namespace, lang: "cpp") = {
+  let source_code = read(file)
+  let code = ""
+  let flag = false
+
+  for line in source_code.split("\n") {
+    if line == ("} // namespace " + namespace) {
+      flag = false
+    }
+    if flag {
+      code += line + "\n"
+    }
+    if line == ("namespace " + namespace + " {") {
+      flag = true
+    }
+  }
+  code = code.slice(0, code.len() - 1)
+
+  raw(lang: lang, block: true, code)
 }
