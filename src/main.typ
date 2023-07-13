@@ -8,107 +8,39 @@
   ),
 )
 
+#outline()
 
 
 
 = 数据结构
+#include "datastrure/main.typ"
 
-== 线段树
-
-=== zkw 线段树
-
-
-
-
+= 树上问题
+#include "tree/main.typ"
 
 = 图论
-
-== 最短路
-
-=== Dijkstra 算法 $O((V+E) log V)$
-
-求点 $s$ 到每个点的最短路
-
-#importCode("graph/dijkstra.cpp", namespace: "dijkstra")
-#importCode("graph/dijkstra.cpp")
-
-=== Floyd $O(V^3)$
-
-== 最小生成树
-
-=== Kruskal 算法
-=== Prim 算法
-
-=== Boruvka 算法
-
-可用于求解边权互不相同的
-
-== 连通性问题
-
-
-
+#include "graph/main.typ"
 
 = 数学
-
-== 数论
-
-== 多项式
-
-=== 快速数论变换（NTT）
-
-=== 多项式乘法
-
-
-
-
+#include "math/main.typ"
 
 = 字符串
-
-
-
-
+#include "string/main.typ"
 
 = 计算几何
-
-== 计算几何基础
-
-
-
-
+#include "geometry/main.typ"
 
 = 动态规划
-
-
-
-
+#include "dp/main.typ"
 
 = 杂项
-
-== A$*$ 搜索
-
-== 模拟退火
-
-
-
-
+#include "misc/main.typ"
 
 = 思路
+#include "thinking/main.typ"
 
-== 离线算法
-
-=== CDQ 分治
-
-=== 整体二分
-
-=== 莫队
-
-
-
+= 常见错误
+#include "bugs/main.typ"
 
 = 附录
-
-== 编辑指南
-
-== 浏览计数
-
-#image("https://count.getloli.com/get/@mem-acm-template?theme=rule34")
+#include "appendix/main.typ"
