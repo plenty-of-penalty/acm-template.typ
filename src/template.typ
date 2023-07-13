@@ -56,9 +56,12 @@
   show: columns.with(2, gutter: 1em)
 
   show raw.where(block: true): it => {
-    set par(justify: false)
-
     let codes = it.text.split("\n")
+    let font = (font: ("Cascadia Code"), size: 0.95em)
+  
+    set text(..font)
+    
+    set par(justify: false)
     grid(
       columns: (100%, 98%),
       column-gutter: -98%,
