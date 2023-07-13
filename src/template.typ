@@ -23,7 +23,7 @@
   set text(font: (
     "New Computer Modern",
     "Source Han Serif SC VF",
-  ), lang: "zh-CN")
+  ), lang: "zh")
   show math.equation: set text(weight: 400)
 
   show par: set block(above: 0.75em, below: 0.75em)
