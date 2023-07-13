@@ -1,7 +1,7 @@
 #let project(title: "", authors: (), body) = {
   set document(author: authors, title: title)
   set page(
-    margin: (left: 10mm, right: 10mm, top: 15mm, bottom: 15mm),
+    margin: (left: 10mm, right: 10mm, top: 18mm, bottom: 18mm),
     numbering: "1",
     number-align: center,
 
@@ -15,7 +15,7 @@
           query(selector(heading.where(level: 1)).before(loc), loc).last().body
         }
       })
-      #v(-0.25em)
+      #v(-0.4em)
       #line(length: 100%, stroke: 0.5pt)
     ],
     header-ascent: 30%,
