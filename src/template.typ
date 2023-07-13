@@ -20,15 +20,18 @@
     ],
     header-ascent: 30%,
   )
-  set text(font: "New Computer Modern", lang: "en")
+  set text(font: (
+    "New Computer Modern",
+    "Source Han Serif SC VF",
+  ), lang: "zh-CN")
   show math.equation: set text(weight: 400)
 
   show par: set block(above: 0.75em, below: 0.75em)
 
-  set heading(numbering: "1.1")
+  set heading(numbering: "1.1.1")
 
   show heading: it => {
-    if it.level > 2 {
+    if it.level > 3 {
       parbreak()
       text(11pt, style: "italic", weight: "regular", it.body + ".")
     } else {
