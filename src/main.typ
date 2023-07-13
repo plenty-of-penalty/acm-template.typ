@@ -10,6 +10,22 @@
 
 = 数据结构
 
+== 线段树
+
+=== zkw 线段树
+
+= 图论
+
+== 最短路
+
+=== Dijkstra $O((V+E) log V)$
+
+#importCode("graph/dijkstra.cpp", "dijkstra")
+
+=== Floyd $O(V^3)$
+
+= 测试
+
 = 数学
 
 == 多项式
