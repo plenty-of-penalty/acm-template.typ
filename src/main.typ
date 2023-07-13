@@ -101,3 +101,14 @@
 === 整体二分
 
 === 莫队
+
+
+
+
+= 附录
+
+== 编辑指南
+
+== 浏览计数
+
+#image("https://count.getloli.com/get/@mem-acm-template?theme=rule34")
