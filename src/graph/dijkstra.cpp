@@ -8,11 +8,12 @@ int n, m, s;
 vector<pair<int, int>> G[N];
 
 namespace dijkstra {
-// 求 s 点到每个点的最短路
+// 稀疏图中，求每两点间最短路径时，Dijkstra 较 Floyd 表现更优。
+// 测试数学公式：$1$。
 const long long inf = 0x6363636363636363;
 long long dis[N];
 priority_queue<pair<long long, int>> q;
-void dij(int s) {
+void dij(int s) { // 求点 s 到每个点的最短路
   fill(dis + 1, dis + n + 1, inf);
   dis[s] = 0, q.push({0, s});
   while (q.size()) {
