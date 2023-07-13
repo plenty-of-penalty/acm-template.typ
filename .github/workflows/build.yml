@@ -28,11 +28,16 @@ jobs:
         with:
           source_file: src/main.typ
 
+      - name: Move PDF file
+        run: |
+          mkdir ./dist
+          mv ./src/main.pdf ./dist
+
       - name: Upload PDF file
         uses: actions/upload-artifact@v3
         with:
           name: PDF
-          path: src/main.pdf
+          path: dist/main.pdf
 
       - name: Get current date
         id: date
