@@ -27,7 +27,7 @@
       "Source Han Serif",
       "Source Han Serif SC VF",
     ),
-    size: 8.5pt,
+    size: 9pt,
     lang: "zh",
   )
 
