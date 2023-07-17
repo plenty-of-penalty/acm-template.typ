@@ -82,8 +82,7 @@ vector<int> polyInv(vector<int> f, int n) {
   int invn = power(n, mod - 2);
   getRevRoot(n), ntt(f, n), ntt(g, n);
   for (int i = 0; i < n; i++) f[i] = (ll)f[i] * g[i] % mod;
-  reverse(f.begin() + 1, f.end());
-  ntt(f, n);
+  reverse(f.begin() + 1, f.end()), ntt(f, n);
   for (int i = 1; i < n / 2; i++) f[i] = 0;
   for (int i = n / 2; i < n; i++) {
     f[i] = (ll)f[i] * invn % mod;
