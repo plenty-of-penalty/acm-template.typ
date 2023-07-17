@@ -131,10 +131,9 @@ vector<int> polyDeri(vector<int> f) {
 vector<int> polyInte(vector<int> f) {
   f.push_back(0);
   int m = f.size();
-  initInv(m);
+  initInv(m); // 需要自备线性求逆元
   for (int i = m - 1; i >= 1; i--) {
     f[i] = (ll)f[i - 1] * inv[i] % mod;
-    // 需要一个线性求逆元板子
   }
   f[0] = 0;
   return f;
