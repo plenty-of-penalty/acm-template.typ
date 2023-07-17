@@ -8,7 +8,7 @@
 
 == 多项式
 
-=== 模域运算常用函数
+=== 模意义下常用运算
 
 #importCode("math/polynom/多项式.cpp", namespace: "ModulusOperations")
 
