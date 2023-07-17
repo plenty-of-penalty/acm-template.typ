@@ -1,7 +1,7 @@
 #import "template.typ": *
 
 #show: project.with(  
-  title: "ACM Template",
+  title: "Rise from the Ashes",
   authors: (
     "memset0",
     "Sulfox",
