@@ -24,7 +24,8 @@ using namespace modulus_op;
 namespace polynom_mul {
 vector<int> rev, rt;
 void getRevRoot(int n) {
-  int m = log(n) / log(2) + 1e-8;
+  int m = __lg(n);
+  // int m = log(n) / log(2) + 1e-8;
   rev.resize(n);
   for (int i = 1; i < n; i++) {
     rev[i] = rev[i >> 1] >> 1 | (i & 1) << (m - 1);
