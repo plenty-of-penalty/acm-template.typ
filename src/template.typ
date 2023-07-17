@@ -67,7 +67,7 @@
 
   show raw.where(block: true): it => {
     let codes = it.text.split("\n")
-    let font = (font: ("Cascadia Code"), size: 1.05em)
+    let font = (font: ("Cascadia Code"), size: 0.98em)
   
     set text(..font)
     
@@ -78,7 +78,7 @@
       block(width: 98%, inset: 1em, for i in range(codes.len()) {
         box(width: 0pt, align(right, text(
           style: "italic",
-          size: 6.5pt,
+          size: 6pt,
           fill: rgb("#a0a0a0"),
           str(i + 1) + h(0em)
         )))
