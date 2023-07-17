@@ -2,7 +2,7 @@
 #define ll long long
 using namespace std;
 
-namespace modulus_op {
+namespace ModulusOperations {
 const int mod = 998244353;
 inline int sub(int x, int y) {
   x -= y;
@@ -18,8 +18,8 @@ inline int power(int a, int b) {
     if (b & 1) s = (ll)s * a % mod;
   return s;
 }
-} // namespace modulus_op
-using namespace modulus_op;
+} // namespace ModulusOperations
+using namespace ModulusOperations;
 
 namespace polynom_mul {
 vector<int> rev, rt;

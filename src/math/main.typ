@@ -10,7 +10,7 @@
 
 === 模域运算常用函数
 
-#importCode("math/polynom/多项式.cpp", namespace: "modulus_op")
+#importCode("math/polynom/多项式.cpp", namespace: "ModulusOperations")
 
 === 多项式乘法
 
