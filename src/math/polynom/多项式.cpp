@@ -110,11 +110,11 @@ vector<int> inv = {1, 1};
 void initInv(int m) {
   static int n = 2;
   if (n < m) {
-    n = m;
     inv.resize(m);
     for (int i = n; i < m; i++) {
       inv[i] = (ll)(mod - mod / i) * inv[mod % i] % mod;
     }
+    n = m;
   }
 }
 
@@ -184,13 +184,10 @@ int main() {
   freopen("1.in", "r", stdin);
 #endif
   ios::sync_with_stdio(0), cin.tie(0);
-  int n, m;
-  vector<int> f, g;
-  cin >> n >> m, ++n, ++m;
-  f.resize(n);
+  int n;
+  cin >> n;
+  vector<int> f(n);
   for (int i = 0; i < n; i++) cin >> f[i];
-  g.resize(m);
-  for (int i = 0; i < m; i++) cin >> g[i];
-  vector<int> h = f * g;
-  for (int i = 0; i < h.size(); i++) cout << h[i] << " \n"[i + 1 == h.size()];
+  vector<int> g = polyExp(f);
+  for (int i = 0; i < n; i++) cout << g[i] << " \n"[i + 1 == n];
 }
