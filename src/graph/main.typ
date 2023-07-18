@@ -18,11 +18,11 @@
 
 求点 $s$ 到每个点的最短路
 
-#importCode("graph/dijkstra.cpp", namespace: "dijkstra")
+#importCode("graph/最短路-dijkstra.cpp", namespace: "dijkstra")
 
 === Floyd 算法 $O(n^3)$
 
-#importCode("graph/floyd.cpp")
+#importCode("graph/最短路-floyd.cpp")
 
 == 最小生成树
 
