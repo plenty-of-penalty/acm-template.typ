@@ -4,7 +4,7 @@ const int N = 1e4 + 9;
 int n, x[N], y[N], w[N];
 double ansx, ansy, dis;
 namespace SimulateAnneal {
-double Rand() { return (double)rand() / RAND_MAX; }
+double rng() { return (double)rand() / RAND_MAX; }
 double calc(double xx, double yy) {
   double res = 0;
   for (int i = 1; i <= n; ++i) {
@@ -18,15 +18,15 @@ void SA() {
   double t = 100000;
   double nowx = ansx, nowy = ansy;
   while (t > 0.001) {
-    double nxtx = nowx + t * (Rand() * 2 - 1);
-    double nxty = nowy + t * (Rand() * 2 - 1);
+    double nxtx = nowx + t * (rng() - 0.5);
+    double nxty = nowy + t * (rng() - 0.5);
     double delta = calc(nxtx, nxty) - calc(nowx, nowy);
-    if (exp(-delta / t) > Rand()) nowx = nxtx, nowy = nxty;
+    if (exp(-delta / t) > rng()) nowx = nxtx, nowy = nxty;
     t *= 0.97;
   }
   for (int i = 1; i <= 1000; ++i) {
-    double nxtx = ansx + t * (Rand() * 2 - 1);
-    double nxty = ansy + t * (Rand() * 2 - 1);
+    double nxtx = ansx + t * (rng() - 0.5);
+    double nxty = ansy + t * (rng() - 0.5);
     calc(nxtx, nxty);
   }
 }
