@@ -8,7 +8,7 @@ int x = rng();
 long long y = rng64();
 ```
 
-可用 `std:>uniform_int_distribution` 生成范围随机数。
+可用 `std::uniform_int_distribution` 生成范围随机数。
 
 ```cpp
 template <typename T> inline T rand(T l, T r) {
