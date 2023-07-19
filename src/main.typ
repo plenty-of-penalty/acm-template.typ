@@ -42,5 +42,8 @@
 = 常见错误
 #include "bugs/main.typ"
 
+= 语言相关
+#include "stl/main.typ"
+
 = 附录
 #include "appendix/main.typ"
