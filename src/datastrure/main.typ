@@ -1,3 +1,13 @@
+#import "../template.typ": *
+
+== 简单数据结构
+
+=== 可删堆
+
+#importCode("datastrure/简单数据结构/可删堆.cpp", namespace: "DeletableHeap")
+
+=== 哈希表
+
 == 线段树
 
 === zkw 线段树
