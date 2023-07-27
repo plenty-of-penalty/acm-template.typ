@@ -4,6 +4,8 @@
   title: "Rise from the Ashes",
   authors: (
     "memset0",
+  ),
+  special_thanks: (
     "Sulfox",
   ),
 )

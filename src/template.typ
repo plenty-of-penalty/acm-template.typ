@@ -1,4 +1,4 @@
-#let project(title: "", authors: (), body) = {
+#let project(title: "", authors: (), special_thanks: (), body) = {
   set document(author: authors, title: title)
   set page(
     margin: (left: 10mm, right: 10mm, top: 18mm, bottom: 18mm),
@@ -33,7 +33,7 @@
 
   show math.equation: set text(weight: 400)
 
-  show par: set block(above: 0.75em, below: 0.75em)
+  show par: set block(above: 1.25em, below: 1.25em)
 
   set heading(numbering: "1.1.1")
 
