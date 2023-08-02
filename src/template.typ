@@ -67,7 +67,7 @@
 
   show raw.where(block: true): it => {
     let codes = it.text.split("\n")
-    let font = (font: ("Cascadia Code"), size: 0.98em)
+    let font = (font: ("Cascadia Code"), size: 1.06em)
   
     set text(..font)
     

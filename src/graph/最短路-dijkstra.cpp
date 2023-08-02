@@ -3,26 +3,26 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-const int N = 3e5 + 9;
-int n, m, s;
-vector<pair<int, int>> G[N];
+const int N=3e5+9;
+int n,m,s;
+vector <pair<int,int>> G[N];
 
-const long long inf = 0x6363636363636363;
+const long long inf=0x6363636363636363;
 namespace dijkstra {
 // Note：稀疏图中求每两点间最短路径时，Dijkstra 较 Floyd 表现更优。
 long long dis[N];
-priority_queue<pair<long long, int>> q;
-void dij(int s) { // 求点 s 到每个点的最短路
-  fill(dis + 1, dis + n + 1, inf);
-  dis[s] = 0, q.push({0, s});
-  while (q.size()) {
-    auto [d, u] = q.top();
+priority_queue <pair<long long,int>> q;
+void dij(int s){ // 求点 s 到每个点的最短路
+  fill(dis+1,dis+n+1,inf);
+  dis[s]=0,q.push({0,s});
+  while(q.size()){
+    auto[d,u] = q.top();
     q.pop(); // 坑：上行不能用 auto&，因为这里释放了地址
-    if (dis[u] + d) continue;
-    for (const auto &[v, w] : G[u]) {
-      if (dis[u] + w < dis[v]) {
-        dis[v] = dis[u] + w;
-        q.push(make_pair(-dis[v], v));
+    if(dis[u]+d) continue;
+    for(const auto &[v,w] : G[u]){
+      if(dis[u]+w<dis[v]){
+        dis[v]=dis[u]+w;
+        q.push(make_pair(-dis[v],v));
       }
     }
   }
@@ -30,16 +30,16 @@ void dij(int s) { // 求点 s 到每个点的最短路
 } // namespace dijkstra
 using namespace dijkstra;
 
-int main() {
+int main(){
 #ifdef memset0
   freopen("1.in", "r", stdin);
 #endif
-  ios::sync_with_stdio(0), cin.tie(0);
-  cin >> n >> m >> s;
-  for (int u, v, w, i = 1; i <= m; i++) {
-    cin >> u >> v >> w;
-    G[u].emplace_back(v, w);
+  ios::sync_with_stdio(0),cin.tie(0);
+  cin>>n>>m>>s;
+  for(int u,v,w,i=1;i<=m;i++){
+    cin>>u>>v>>w;
+    G[u].emplace_back(v,w);
   }
   dij(s);
-  for (int i = 1; i <= n; i++) cout << (dis[i] == inf ? -1 : dis[i]) << " \n"[i == n];
+  for(int i=1;i<=n;i++) cout<<(dis[i]==inf?-1:dis[i])<<" \n"[i==n];
 }
