@@ -3,6 +3,8 @@
 #show: project.with(  
   title: "Rise from the Ashes",
   authors: (
+    "xyrjr233",
+    "oierwanhong",
     "memset0",
   ),
   special_thanks: (
