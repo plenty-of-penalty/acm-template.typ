@@ -1,5 +1,13 @@
 #import "../template.typ": *
 
+== 网络流
+
+=== 最大流
+#importCode("misc/flow/maxflow.cpp")
+
+=== 费用流
+#importCode("misc/flow/costflow.cpp")
+
 == 状态压缩
 
 === 枚举子集 $O(3^n)$

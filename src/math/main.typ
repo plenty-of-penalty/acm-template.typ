@@ -27,3 +27,13 @@
 === 多项式 $exp$
 
 #importCode("math/polynom/多项式.cpp", namespace: "polynom_exp")
+
+== 多项式（add10k）
+
+=== NTT
+
+#importCode("math/polynom/多项式-wh.cpp", namespace: "polynom")
+
+=== 分治 NTT
+
+#importCode("math/polynom/多项式-wh.cpp", namespace: "DC_NTT")

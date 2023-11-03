@@ -1,10 +1,10 @@
 #import "template.typ": *
 
 #show: project.with(  
-  title: "Rise from the Ashes",
+  title: "Plenty of Penalty",
   authors: (
     "xyrjr233",
-    "oierwanhong",
+    "add10k",
     "memset0",
   ),
   special_thanks: (
@@ -41,7 +41,7 @@
 #include "misc/main.typ"
 
 = 思路
-#include "thinking/main.typ"
+#include "thoughts/main.typ"
 
 = 常见错误
 #include "bugs/main.typ"
