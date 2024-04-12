@@ -12,9 +12,8 @@
   ),
 )
 
-#outline()
-
-
+= 基础模板
+#importCode("template.cpp")
 
 = 数据结构
 #include "datastrure/main.typ"

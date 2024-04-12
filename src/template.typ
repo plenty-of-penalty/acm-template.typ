@@ -25,15 +25,17 @@
     font: (
       "New Computer Modern",
       "Source Han Serif",
-      "Source Han Serif SC VF",
+      "Source Han Serif SC",
+      "Simsun",
+      "STSong",
     ),
-    size: 9pt,
+    size: 10pt,
     lang: "zh",
   )
 
   show math.equation: set text(weight: 400)
 
-  show par: set block(above: 1.25em, below: 1.25em)
+  show par: set block(above: 1.05em, below: 1.05em)
 
   set heading(numbering: "1.1.1")
 
@@ -63,13 +65,10 @@
   )
 
   set par(justify: true)
-  show: columns.with(2, gutter: 1em)
 
   show raw.where(block: true): it => {
     let codes = it.text.split("\n")
-    let font = (font: ("Cascadia Code"), size: 1.06em)
-  
-    set text(..font)
+    set text(font: ("Go Mono"), size: 0.9em)
     
     set par(justify: false)
     grid(
@@ -89,7 +88,17 @@
     )
   }
 
-  body
+  {
+    show: columns.with(2, gutter: 2em)
+    outline()
+  }
+
+  pagebreak(weak: true)
+
+  {
+    show: columns.with(2, gutter: 0.5em)
+    body
+  }
 }
 
 
@@ -100,7 +109,7 @@
   let flag = false
   let firstlines = true
 
-  for line in source_code.split("\n") {
+  for line in source_code.split(regex("\r?\n")) {
     if namespace != none and line == ("} // namespace " + namespace) {
       flag = false
     }

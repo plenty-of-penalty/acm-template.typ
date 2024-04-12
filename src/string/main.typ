@@ -10,7 +10,7 @@
 #importCode("string/SAM-wh.cpp")
 
 == 回文自动机（add10k）
-#importCode("string/PAM-wh.cpp")
+#importCode("string/PAM-wh.cpp", namespace: "PAM")
 
 == Runs
 #importCode("string/Runs.cpp", namespace: "Runs")

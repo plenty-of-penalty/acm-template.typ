@@ -5,9 +5,6 @@
 === 可删堆
 #importCode("datastrure/简单数据结构/可删堆.cpp", namespace: "DeletableHeap")
 
-=== 浮点数求和
-#importCode("datastrure/简单数据结构/StableSum.cpp")
-
 === 哈希表
 
 == 线段树
