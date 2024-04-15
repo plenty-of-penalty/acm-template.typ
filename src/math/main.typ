@@ -3,7 +3,7 @@
 == 数论
 
 === 万能欧几里得
-#importCode("math/number-theory/万能欧几里得.cpp")
+#source("math/number-theory/万能欧几里得.cpp")
 
 == 线性代数
 
@@ -13,30 +13,30 @@
 
 === 模意义下常用运算
 
-#importCode("math/polynom/多项式.cpp", namespace: "ModulusOperations")
+#source("math/polynom/多项式.cpp", namespace: "ModulusOperations")
 
 === 多项式乘法
 
-#importCode("math/polynom/多项式.cpp", namespace: "polynom_mul")
+#source("math/polynom/多项式.cpp", namespace: "polynom_mul")
 
 === 多项式求逆
 
-#importCode("math/polynom/多项式.cpp", namespace: "polynom_inv")
+#source("math/polynom/多项式.cpp", namespace: "polynom_inv")
 
 === 多项式 $ln$
 
-#importCode("math/polynom/多项式.cpp", namespace: "polynom_ln")
+#source("math/polynom/多项式.cpp", namespace: "polynom_ln")
 
 === 多项式 $exp$
 
-#importCode("math/polynom/多项式.cpp", namespace: "polynom_exp")
+#source("math/polynom/多项式.cpp", namespace: "polynom_exp")
 
 == 多项式（add10k）
 
 === NTT
 
-#importCode("math/polynom/多项式-wh.cpp", namespace: "polynom")
+#source("math/polynom/多项式-wh.cpp", namespace: "polynom")
 
 === 分治 NTT
 
-#importCode("math/polynom/多项式-wh.cpp", namespace: "DC_NTT")
+#source("math/polynom/多项式-wh.cpp", namespace: "DC_NTT")

@@ -44,6 +44,9 @@
   show math.equation: set text(weight: 400)
 
   show par: set block(above: 0.8em, below: 0.8em)
+  show raw: set block(above: 0.8em, below: 0.8em)
+  show list: set block(above: 0.8em, below: 0.8em)
+  show heading: set block(above: 0.8em, below: 0.8em)
 
   set heading(numbering: "1.1.1")
 
@@ -80,9 +83,10 @@
     
     set par(justify: false)
     grid(
-      columns: (100%, 98%),
-      column-gutter: -98%,
-      block(width: 98%, inset: 1em, for i in range(codes.len()) {
+      columns: (100%, 95%),
+      column-gutter: -95%,
+      block(width: 100%, inset: 0em, for i in range(codes.len()) {
+        h(1em)
         box(width: 0pt, align(right, text(
           style: "italic",
           size: 6pt,
@@ -92,7 +96,7 @@
         hide(codes.at(i))
         linebreak()
       }),
-      block(width: 100%, inset: 1em, it),
+      block(width: 100%, inset: 0em, it),
     )
   }
 
@@ -121,8 +125,7 @@
   }
 }
 
-
-#let importCode(file, namespace: none, lang: "cpp") = {
+#let source(file, namespace: none, lang: "cpp") = {
   let source_code = read(file)
   let code = ""
   let note = ""

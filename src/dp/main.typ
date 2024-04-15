@@ -2,4 +2,4 @@
 
 == 斜率优化
 
-#importCode("dp/斜率优化.cpp")
+#source("dp/斜率优化.cpp")

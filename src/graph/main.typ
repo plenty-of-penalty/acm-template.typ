@@ -28,13 +28,13 @@
 
 #note 求稀疏图所有点对最短路，Dijkstra 较 Floyd 表现更优。
 
-#importCode("graph/最短路-dijkstra.cpp", namespace: "dijkstra")
+#source("graph/最短路-dijkstra.cpp", namespace: "dijkstra")
 
 === Floyd 算法 $O(n^3)$
 
 #note 无向图可以乘一个 $1/6$ 的常数。
 
-#importCode("graph/最短路-floyd.cpp")
+#source("graph/最短路-floyd.cpp")
 
 == k 短路问题
 
