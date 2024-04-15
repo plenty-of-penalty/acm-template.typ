@@ -8,6 +8,7 @@
 #endif
 using namespace std;
 using ll = long long;
+using ull = unsigned long long;
 const int N = 1e5 + 9;
 int n, a[N];
 int main() {

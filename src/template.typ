@@ -1,12 +1,12 @@
 #let project(title: "", authors: (), special_thanks: (), body) = {
   set document(author: authors, title: title)
   set page(
-    margin: (left: 10mm, right: 10mm, top: 18mm, bottom: 18mm),
+    margin: (left: 8mm, right: 8mm, top: 12mm, bottom: 8mm),
     numbering: "1",
     number-align: center,
 
-    header: [
-      #locate(loc => {
+    header: stack(
+      locate(loc => {
         if query(selector(heading.where(level: 1)).before(loc), loc).len() == 0 {
           "ACM Template"
         } else {
@@ -14,11 +14,19 @@
           " "
           query(selector(heading.where(level: 1)).before(loc), loc).last().body
         }
-      })
-      #v(-0.4em)
-      #line(length: 100%, stroke: 0.5pt)
-    ],
-    header-ascent: 30%,
+      }),
+      v(0.5em),
+      line(length: 100%, stroke: 0.5pt)
+    ),
+    // header-ascent: 30%,
+    footer: {
+      // set text(10pt, baseline: 8pt, spacing: 3pt)
+      grid(
+        columns: (1fr, 1fr),
+        align(left, text("Plenty of Penalty / 十发罚时", size: 0.8em)),
+        align(right, text(counter(page).display("1/1", both: true), size: 0.9em)),
+      )
+    }
   )
 
   set text(
@@ -35,7 +43,7 @@
 
   show math.equation: set text(weight: 400)
 
-  show par: set block(above: 1.05em, below: 1.05em)
+  show par: set block(above: 0.8em, below: 0.8em)
 
   set heading(numbering: "1.1.1")
 
@@ -88,13 +96,25 @@
     )
   }
 
+  show "。": "．"
+
   {
-    show: columns.with(2, gutter: 2em)
+    set text(lang: "en")
+
+    show: columns.with(3, gutter: 2em)
     outline()
+
+    strong("Special Thanks to: ")
+    text("Qingyu, Sulfox and seniors from Zhejiang University.")
+
+    v(2em)
+    set align(center)
+    set text(size: 1.2em, weight: 800)
+    [
+      Good Luck & Have Fun!
+    ]
   }
-
   pagebreak(weak: true)
-
   {
     show: columns.with(2, gutter: 0.5em)
     body
@@ -137,3 +157,6 @@
   }
   raw(lang: lang, block: true, code)
 }
+
+#let note = strong("Note:")
+#let hint = strong("Hint:")

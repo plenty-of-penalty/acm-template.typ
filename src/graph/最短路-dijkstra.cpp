@@ -9,7 +9,6 @@ vector<pair<int, int>> G[N];
 
 const long long inf = 0x6363636363636363;
 namespace dijkstra {
-// Note：稀疏图中求每两点间最短路径时，Dijkstra 较 Floyd 表现更优。
 long long dis[N];
 priority_queue<pair<long long, int>> q;
 void dij(int s) { // 求点 s 到每个点的最短路

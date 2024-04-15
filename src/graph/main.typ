@@ -2,10 +2,6 @@
 
 == 最小生成树
 
-=== Kruskal 算法
-
-=== Prim 算法
-
 === Boruvka 算法 $O(m log n)$
 
 要求给定图的边权两两不同。一般来说，我们可以给相同权值的边增加第二关键字使其满足条件。
@@ -30,11 +26,13 @@
 
 === Dijkstra 算法 $O((n+m) log n)$
 
-求点 $s$ 到每个点的最短路
+#note 求稀疏图所有点对最短路，Dijkstra 较 Floyd 表现更优。
 
 #importCode("graph/最短路-dijkstra.cpp", namespace: "dijkstra")
 
 === Floyd 算法 $O(n^3)$
+
+#note 无向图可以乘一个 $1/6$ 的常数。
 
 #importCode("graph/最短路-floyd.cpp")
 

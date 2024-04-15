@@ -2,6 +2,9 @@
 
 == 数论
 
+=== 万能欧几里得
+#importCode("math/number-theory/万能欧几里得.cpp")
+
 == 线性代数
 
 == 组合数学
