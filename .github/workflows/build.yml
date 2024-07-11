@@ -10,6 +10,9 @@ concurrency:
   group: 'ci'
   cancel-in-progress: false
 
+env:
+  TYPST_FONT_PATHS: /home/runner/work/acm-template.typ/acm-template.typ/fonts
+
 jobs:
   build:
     environment:
@@ -27,12 +30,10 @@ jobs:
 
       - name: Typst
         uses: lvignoli/typst-action@main
-        env:
-          TYPST_FONT_PATHS: fonts
         with:
           source_file: src/main.typ
-          options: |
-            --font-path fonts
+          # options: |
+          #   --font-path fonts
 
       - name: Check existence of output file
         run: |
