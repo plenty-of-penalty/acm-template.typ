@@ -1,3 +1,6 @@
+== Tricks
+#include "tricks.typ"
+
 == 离线算法
 #include "offline.typ"
 

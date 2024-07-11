@@ -15,29 +15,18 @@
 )
 
 = 基础模板
+#include "basic.typ"
 
-- 使用 `std` 命名空间
-- 用大写字母 $N,M$ 表示数据规模，定义时直接 +9。
-
-#source("template.cpp")
-
-== 预编译头文件
-
-```bash
-g++ stdc++.h -g -std=c++17 -O2
-```
-
-== VS Code 配置
-
-TBD
+= 常见错误
+#include "bugs/main.typ"
 
 = 数据结构
 #include "datastrure/main.typ"
 
-= 树上问题
+= 树
 #include "tree/main.typ"
 
-= 图论
+= 图
 #include "graph/main.typ"
 
 = 数学
@@ -55,14 +44,11 @@ TBD
 = 杂项
 #include "misc/main.typ"
 
+= 标准库
+#include "stl/main.typ"
+
 = 思路
 #include "thoughts/main.typ"
-
-= 常见错误
-#include "bugs/main.typ"
-
-= 语言相关
-#include "stl/main.typ"
 
 = 附录
 #include "appendix/main.typ"
