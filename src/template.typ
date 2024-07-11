@@ -1,3 +1,17 @@
+#let font_serif = (
+  "New Computer Modern",
+  "Source Han Serif",
+  "Source Han Serif SC",
+  "Simsun",
+  "STSong",
+)
+#let font_mono = (
+  "Cascadia Code",
+  "Go Mono",
+  "Consolas",
+  ..font_serif,
+)
+
 #let project(title: "", authors: (), special_thanks: (), body) = {
   set document(author: authors, title: title)
   set page(
@@ -30,13 +44,7 @@
   )
 
   set text(
-    font: (
-      "New Computer Modern",
-      "Source Han Serif",
-      "Source Han Serif SC",
-      "Simsun",
-      "STSong",
-    ),
+    font: font_serif,
     size: 10pt,
     lang: "zh",
   )
@@ -79,23 +87,33 @@
 
   show raw.where(block: true): it => {
     let codes = it.text.split("\n")
-    set text(font: ("Go Mono"), size: 0.9em)
-    
+    set text(font: font_mono, size: 0.9em)
+
     set par(justify: false)
     grid(
       columns: (100%, 95%),
       column-gutter: -95%,
-      block(width: 100%, inset: 0em, for i in range(codes.len()) {
-        h(1em)
-        box(width: 0pt, align(right, text(
-          style: "italic",
-          size: 6pt,
-          fill: rgb("#a0a0a0"),
-          str(i + 1) + h(0em)
-        )))
-        hide(codes.at(i))
-        linebreak()
-      }),
+      block(
+        width: 100%,
+        inset: 0em,
+        for i in range(codes.len()) {
+          h(1em)
+          box(
+            width: 0pt,
+            align(
+              right,
+              text(
+                style: "italic",
+                size: 6pt,
+                fill: rgb("#a0a0a0"),
+                str(i + 1) + h(0em),
+              ),
+            ),
+          )
+          hide(codes.at(i))
+          linebreak()
+        },
+      ),
       block(width: 100%, inset: 0em, it),
     )
   }
