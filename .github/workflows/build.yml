@@ -22,14 +22,17 @@ jobs:
         uses: actions/checkout@v3
       - name: Setup Pages
         uses: actions/configure-pages@v3
+      - name: Print working directory
+        run: pwd
 
       - name: Typst
         uses: lvignoli/typst-action@main
+        env:
+          TYPST_FONT_PATHS: fonts
         with:
           source_file: src/main.typ
           options: |
-            --font-path
-            fonts
+            --font-path fonts
 
       - name: Check existence of output file
         run: |
