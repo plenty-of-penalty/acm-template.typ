@@ -35,6 +35,8 @@
 
 #source("datastrure/LCT.cpp", namespace: "LCT")
 
+=== 全局平衡二叉树
+
 == Top Tree
 
 == 析合树

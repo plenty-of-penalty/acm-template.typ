@@ -1,15 +1,17 @@
 #import "template.typ": *
 
-#show: project.with(  
+#show: project.with(
   title: "Plenty of Penalty",
   authors: (
     "xyrjr233",
     "add10k",
     "memset0",
   ),
-  special_thanks: (
-    "Sulfox",
-  ),
+  special_thanks: [
+    Qingyu,
+    Sulfox,
+    and seniors from _Zhejiang University_.
+  ],
 )
 
 = 基础模板
@@ -18,6 +20,16 @@
 - 用大写字母 $N,M$ 表示数据规模，定义时直接 +9。
 
 #source("template.cpp")
+
+== 预编译头文件
+
+```bash
+g++ stdc++.h -g -std=c++17 -O2
+```
+
+== VS Code 配置
+
+TBD
 
 = 数据结构
 #include "datastrure/main.typ"

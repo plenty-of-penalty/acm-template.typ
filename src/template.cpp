@@ -8,11 +8,15 @@
 #endif
 using namespace std;
 using ll = long long;
+using lf = long double;
 using ull = unsigned long long;
+
 const int N = 1e5 + 9;
 int n, a[N];
+
 int main() {
   cin.tie(0)->sync_with_stdio(0);
+
   cin >> n;
   for (int i = 1; i <= n; i++) cin >> a[i];
 }

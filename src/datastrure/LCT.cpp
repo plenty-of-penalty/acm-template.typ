@@ -1,10 +1,10 @@
 #include "bits/stdc++.h"
 using namespace std;
 typedef long long ll;
-const int MAXN = 200011;
+const int N = 200011;
 namespace LCT {
-int fa[MAXN], son[MAXN][2], s[MAXN];
-bool rev[MAXN];
+int fa[N], son[N][2], s[N];
+bool rev[N];
 bool not_root(int x) { return son[fa[x]][0] == x || son[fa[x]][1] == x; }
 void reverse(int x) {
   if (!x) return;
@@ -65,9 +65,9 @@ void cut(int x, int y) {
 } // namespace LCT
 using namespace LCT;
 typedef pair<int, int> pii;
-pii ed[MAXN];
-int f[MAXN];
-ll sum[MAXN];
+pii ed[N];
+int f[N];
+ll sum[N];
 int main() {
   int n, m;
   scanf("%d%d", &n, &m);

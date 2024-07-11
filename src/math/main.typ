@@ -2,7 +2,18 @@
 
 == 数论
 
+=== 根号分治
+
+#usage 可以 $O(1)$ 计算 $f(r)-f(l)$，则可以 $O(sqrt(n))$ 计算 $sum_(i=1)^n f(i) g(floor(n/i))$。
+
+#caution 注意一些 $i=0$ 的 Case
+
+#source("math/number-theory/数论分块.cpp", namespace: "sqrt_decomposition")
+
+=== $n$ 维根号分治
+
 === 万能欧几里得
+
 #source("math/number-theory/万能欧几里得.cpp")
 
 == 线性代数

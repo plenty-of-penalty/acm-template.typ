@@ -109,7 +109,7 @@
     outline()
 
     strong("Special Thanks to: ")
-    text("Qingyu, Sulfox and seniors from Zhejiang University.")
+    special_thanks
 
     v(2em)
     set align(center)
@@ -161,5 +161,7 @@
   raw(lang: lang, block: true, code)
 }
 
+#let usage = strong("Usage:")
 #let note = strong("Note:")
 #let hint = strong("Hint:")
+#let caution = strong("Caution:")

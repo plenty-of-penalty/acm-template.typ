@@ -8,13 +8,19 @@
 === 费用流
 #source("misc/flow/costflow.cpp")
 
-== 状态压缩
+== 位运算
 
 === 枚举子集 $O(3^n)$
 
 #source("misc/bit/枚举子集.cpp")
 
 === 子集和 DP（SOS DP）
+
+=== 手写 bitset
+
+特别适用于动态长度的情况。
+
+#source("misc/bit/bitset.cpp")
 
 == 随机化
 
