@@ -1,6 +1,6 @@
 struct SAM {
-  int t[MAXN][26], pre[MAXN], len[MAXN];
-  int sg[MAXN];
+  int t[N][26], pre[N], len[N];
+  int sg[N];
   int last, tot;
   SAM() { last = tot = 1; }
   void clear() {
