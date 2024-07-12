@@ -24,7 +24,7 @@ void extend(int w) {
 }
 void solve() {
   ll ans = 0;
-  for (int i = tot; i; --i) size[fail[i]] += size[i], ans = std::max(ans, ll(size[i]) * len[i]);
+  for (int i = tot; i; --i) size[fail[i]] += size[i], ans = max(ans, ll(size[i]) * len[i]);
   printf("%lld\n", ans);
 }
 } // namespace PAM

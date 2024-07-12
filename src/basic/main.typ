@@ -1,4 +1,4 @@
-#import "template.typ": *
+#import "../template.typ": *
 
 - 使用 `std` 命名空间。
 - 使用关闭流同步的 `cin` 和 `cout` 进行 IO。
@@ -15,3 +15,6 @@ g++ stdc++.h -g -std=c++17 -O2
 == VS Code 配置
 
 TBD
+
+== Tricks
+#include "tricks.typ"

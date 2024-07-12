@@ -4,7 +4,7 @@ template <class T, class V> struct Point {
   Point() {}
   explicit Point(T _x, T _y) { x = _x, y = _y; }
   template <class W> explicit Point(const Point<T, W> &o) { x = o.x, y = o.y; }
-  std::string to_string() const { return '(' + std::to_string(x) + ',' + std::to_string(y) + ')'; }
+  string to_string() const { return '(' + to_string(x) + ',' + to_string(y) + ')'; }
 
   constexpr T real() const { return x; }
   constexpr T imag() const { return y; }
@@ -43,11 +43,11 @@ template <class T, class V> constexpr V orient(const Point<T, V> &a, const Point
 template <class T, class V> constexpr bool is_perp(const Point<T, V> &a, const Point<T, V> &b) { return dot(a, b) == 0; }
 template <class T, class V> constexpr bool polar_compare(const Point<T, V> &a, const Point<T, V> &b) {
   // to solve cases that vectors are more than 180deg apart in order
-  return std::make_tuple(a.side(), (V)0, a.square()) < std::make_tuple(b.side(), cross(a, b), b.square());
+  return make_tuple(a.side(), (V)0, a.square()) < make_tuple(b.side(), cross(a, b), b.square());
 }
-template <class T, class V> void polar_sort(vector<Point<T, V>> &vec) { std::sort(vec.begin(), vec.end(), polar_compare); }
+template <class T, class V> void polar_sort(vector<Point<T, V>> &vec) { sort(vec.begin(), vec.end(), polar_compare); }
 template <class T, class V> void polar_sort_around(vector<Point<T, V>> &vec, Point<T, V> o) {
-  std::sort(vec.begin(), vec.end(), [&o](const Point<T, V> &a, const Point<T, V> &b) { return polar_compare(a - o, b - o); });
+  sort(vec.begin(), vec.end(), [&o](const Point<T, V> &a, const Point<T, V> &b) { return polar_compare(a - o, b - o); });
 }
 
 template <class T, class V> struct Segment {
@@ -55,7 +55,7 @@ template <class T, class V> struct Segment {
   Segment() {}
   explicit Segment(const Point<T, V> &_u, const Point<T, V> &_v) { u = _u, v = _v; }
   template <class W> explicit Segment(const Segment<T, W> &o) { u.x = o.u.x, u.y = o.u.y, v.x = o.v.x, v.y = o.v.y; }
-  std::string to_string() const { return '[' + u.to_string() + ',' + v.to_string() + ']'; }
+  string to_string() const { return '[' + u.to_string() + ',' + v.to_string() + ']'; }
 
   constexpr Point<T, V> vector() const { return v - u; }
   constexpr bool collinear(const Point<T, V> &o) const { return cross(u - v, o - v) == 0; }
@@ -73,8 +73,8 @@ template <class T, class V> struct Segment {
 
   constexpr double distance(const Point<T, V> &o) const {
     V oa = dot(o - u, v - u), ob = dot(o - v, u - v);
-    // std::cerr << oa << " " << ob << " " << cross(o - u, v - u) << " " << cross(o - v, u - v) << std::endl;
-    return oa >= 0 && ob >= 0 ? fabs(cross(o - u, v - u)) / (u - v).norm() : std::min((o - u).norm(), (o - v).norm());
+    // cerr << oa << " " << ob << " " << cross(o - u, v - u) << " " << cross(o - v, u - v) << endl;
+    return oa >= 0 && ob >= 0 ? fabs(cross(o - u, v - u)) / (u - v).norm() : min((o - u).norm(), (o - v).norm());
   }
 };
 template <class T, class V> constexpr bool proper_inter(const Segment<T, V> &a, const Segment<T, V> &b) {

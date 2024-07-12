@@ -55,15 +55,15 @@ W Wan(ll p, ll q, ll r, ll n, W A, W B) {
 }
 int main() {
   // freopen("wan.in","r",stdin);
-  std::cin.tie(0)->sync_with_stdio(0);
+  cin.tie(0)->sync_with_stdio(0);
   ll p, q, r, L, n;
-  std::cin >> p >> q >> r >> L >> n;
+  cin >> p >> q >> r >> L >> n;
   for (int i = 0; i < n; ++i) I.a[i][i] = 1;
   matrix A, B;
   for (int i = 0; i < n; ++i)
-    for (int j = 0; j < n; ++j) std::cin >> A.a[i][j];
+    for (int j = 0; j < n; ++j) cin >> A.a[i][j];
   for (int i = 0; i < n; ++i)
-    for (int j = 0; j < n; ++j) std::cin >> B.a[i][j];
+    for (int j = 0; j < n; ++j) cin >> B.a[i][j];
   W U(I, B, matrix()), R(A, I, A);
   W res(I, Pow(B, r / q), matrix());
   res = res * Wan(p, q, r % q, L, U, R);

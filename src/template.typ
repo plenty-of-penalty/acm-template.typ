@@ -5,11 +5,21 @@
   "Simsun",
   "STSong",
 )
+#let font_sans_serif = (
+  "Helvetica",
+  "Arial",
+  "Source Han Sans",
+  "Source Han Sans SC",
+  "Hiragino Sans GB",
+  "Noto Sans CJK SC",
+  "Heiti",
+  ..font_serif,
+)
 #let font_mono = (
   "Cascadia Code",
   "Go Mono",
   "Consolas",
-  ..font_serif,
+  ..font_sans_serif,
 )
 
 #let project(title: "", authors: (), special_thanks: (), body) = {
@@ -199,3 +209,8 @@
 #let desc = strong("Description:")
 #let hint = strong("Hint:")
 #let caution = strong("Caution:")
+#let theorem(name, content) = {
+  underline(stroke: 0.5pt, offset: 2pt, text(stroke: 0.24pt, name))
+  h(0.5em)
+  content
+}

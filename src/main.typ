@@ -14,8 +14,8 @@
   ],
 )
 
-= 基础模板
-#include "basic.typ"
+= 基础
+#include "basic/main.typ"
 
 = 常见错误
 #include "bugs/main.typ"
@@ -46,9 +46,6 @@
 
 = 标准库
 #include "stl/main.typ"
-
-= 思路
-#include "thoughts/main.typ"
 
 = 附录
 #include "appendix/main.typ"

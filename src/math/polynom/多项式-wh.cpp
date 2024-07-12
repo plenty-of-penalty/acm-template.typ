@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+using namespace std;
 namespace polynom {
 const int mod = 998244353;
 inline int S(int x) { return x < mod ? x : x - mod; }
@@ -35,7 +36,7 @@ int init(int n) {
 void DFT(int *a, int n) {
   for (int i = 0; i < n; ++i) rev[i] = (rev[i >> 1] >> 1) | (i & 1 ? (n >> 1) : 0);
   for (int i = 0; i < n; ++i)
-    if (rev[i] > i) std::swap(a[i], a[rev[i]]);
+    if (rev[i] > i) swap(a[i], a[rev[i]]);
   for (int cur = 1; cur < n; cur <<= 1)
     for (int j = 0; j < n; j += cur << 1)
       for (int k = 0; k < cur; ++k) {
@@ -44,7 +45,7 @@ void DFT(int *a, int n) {
       }
 }
 void IDFT(int *a, int n) {
-  std::reverse(a + 1, a + n);
+  reverse(a + 1, a + n);
   DFT(a, n);
   for (int i = 0; i < n; ++i) a[i] = ll(a[i]) * inv[n] % mod;
 }

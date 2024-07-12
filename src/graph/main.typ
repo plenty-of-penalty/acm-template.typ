@@ -24,13 +24,13 @@
 
 == 最短路
 
-=== Dijkstra 算法 $O((n+m) log n)$
+=== Dijkstra 算法
 
 #note 求稀疏图所有点对最短路，Dijkstra 较 Floyd 表现更优。
 
 #source("graph/最短路-dijkstra.cpp", namespace: "dijkstra")
 
-=== Floyd 算法 $O(n^3)$
+=== Floyd 算法
 
 #note 无向图可以乘一个 $1/6$ 的常数。
 
@@ -46,12 +46,14 @@
 
 == 2-SAT
 
+== 网络流
+
+#include "flow/main.typ"
+
 == 欧拉图
 
 == 哈密顿图
 
 == 弦图
 
-== 网络流
-
-#include "flow/main.typ"
+== 支配树
