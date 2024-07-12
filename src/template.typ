@@ -196,5 +196,6 @@
 
 #let usage = strong("Usage:")
 #let note = strong("Note:")
+#let desc = strong("Description:")
 #let hint = strong("Hint:")
 #let caution = strong("Caution:")

@@ -16,6 +16,25 @@
 
 #source("math/number-theory/万能欧几里得.cpp")
 
+== 群论
+
+=== Burnside 引理
+
+#desc $X$ 为有限集 $A$ 到 $B$ 的映射；$X/G$ 表示作用在 $X$ 上产生的等价类集合。
+
+$
+  abs(X"/"G) = 1 / abs(G) sum_(g in G) abs(X^g)
+  quad (X^g = {x | x in X, space g(x) = X})
+$
+
+=== Polya 定理
+
+#desc $c(g)$ 表示置换 $g$ 能拆分成的不相交的循环置换的数量。
+
+$
+  abs(X"/"G) = 1 / abs(G) sum_(g in G) abs(B)^(c(g))
+$
+
 == 线性代数
 
 == 组合数学
