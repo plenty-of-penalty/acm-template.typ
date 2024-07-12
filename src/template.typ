@@ -124,8 +124,23 @@
     set text(lang: "en")
 
     show: columns.with(3, gutter: 2em)
-    outline()
+    show outline.entry.where(level: 1): it => {
+      v(1.2em, weak: true)
+      strong(it)
+    }
+    outline(indent: n => {
+      if (n == 0) {
+        return 0pt
+      }
+      if (n == 1) {
+        return 1em
+      }
+      if (n == 2) {
+        return 1.5em
+      }
+    })
 
+    v(1em)
     strong("Special Thanks to: ")
     special_thanks
 
