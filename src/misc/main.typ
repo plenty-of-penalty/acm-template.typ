@@ -20,7 +20,7 @@
 
 特别适用于动态长度的情况。
 
-#source("misc/bit/bitset.cpp")
+#source("misc/bit/bitset.hpp", namespace: "my_bitset")
 
 == 随机化
 
