@@ -22,40 +22,10 @@
   ..font_sans_serif,
 )
 
-#let project(title: "", authors: (), special_thanks: (), body) = {
-  set document(author: authors, title: title)
-  set page(
-    margin: (left: 8mm, right: 8mm, top: 12mm, bottom: 8mm),
-    numbering: "1",
-    number-align: center,
-
-    header: stack(
-      locate(loc => {
-        if query(selector(heading.where(level: 1)).before(loc), loc).len() == 0 {
-          "ACM Template"
-        } else {
-          counter(heading).display()
-          " "
-          query(selector(heading.where(level: 1)).before(loc), loc).last().body
-        }
-      }),
-      v(0.5em),
-      line(length: 100%, stroke: 0.5pt)
-    ),
-    // header-ascent: 30%,
-    footer: {
-      // set text(10pt, baseline: 8pt, spacing: 3pt)
-      grid(
-        columns: (1fr, 1fr),
-        align(left, text("Plenty of Penalty / 十发罚时", size: 0.8em)),
-        align(right, text(counter(page).display("1/1", both: true), size: 0.9em)),
-      )
-    }
-  )
-
+#let styled(body) = {
   set text(
     font: font_serif,
-    size: 10pt,
+    size: 18pt,
     lang: "zh",
   )
 
@@ -78,20 +48,6 @@
   }
 
   set par(leading: 0.58em)
-
-  align(center)[
-    #block(pad(top: 2em, bottom: 0.5em, text(weight: 700, 1.75em, title)))
-  ]
-
-  pad(
-    bottom: 2em,
-    x: 2em,
-    grid(
-      columns: (1fr,) * calc.min(3, authors.len()),
-      gutter: 1em,
-      ..authors.map(author => align(center, strong(author))),
-    ),
-  )
 
   set par(justify: true)
 
@@ -129,6 +85,60 @@
   }
 
   show "。": "．"
+
+  body
+}
+
+#let project(title: "", authors: (), special_thanks: (), body) = {
+  set document(author: authors, title: title)
+  set page(
+    margin: (left: 8mm, right: 8mm, top: 12mm, bottom: 8mm),
+    numbering: "1",
+    number-align: center,
+
+    header:
+      locate(loc => {
+        if query(selector(heading.where(level: 1)).before(loc), loc).len() == 0 {
+          v(0pt)
+        } else {
+          stack(
+            {
+              counter(heading).display()
+              " "
+              query(selector(heading.where(level: 1)).before(loc), loc).last().body
+            },
+            v(0.36em),
+            line(length: 100%, stroke: 0.5pt),
+          )
+        }
+      }),
+    // header-ascent: 30%,
+    footer: {
+      // set text(10pt, baseline: 8pt, spacing: 3pt)
+      grid(
+        columns: (1fr, 1fr),
+        align(left, text("Plenty of Penalty / 十发罚时", size: 0.8em)),
+        align(right, text(counter(page).display("1/1", both: true), size: 0.9em)),
+      )
+    }
+  )
+
+  show: styled
+  set text(size: 10pt)
+
+  align(center)[
+    #block(pad(top: 1.6em, bottom: 0.8em, text(weight: 700, 1.75em, title)))
+  ]
+
+  pad(
+    bottom: 1.2em,
+    x: 2em,
+    grid(
+      columns: (1fr,) * calc.min(3, authors.len()),
+      gutter: 1em,
+      ..authors.map(author => align(center, strong(author))),
+    ),
+  )
 
   {
     set text(lang: "en")

@@ -1,4 +1,5 @@
 #import "../template.typ": *
+#show: styled
 
 == 网络流
 

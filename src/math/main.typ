@@ -1,4 +1,5 @@
 #import "../template.typ": *
+#show: styled
 
 == 数论
 #include "number-theory.typ"

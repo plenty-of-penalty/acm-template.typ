@@ -1,4 +1,5 @@
 #import "../template.typ": *
+#show: styled
 
 == 二维计算几何模板
 #source("geometry/二维计算几何模板.cpp", namespace: "geo")

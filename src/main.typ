@@ -1,7 +1,7 @@
 #import "template.typ": *
 
 #show: project.with(
-  title: "Plenty of Penalty",
+  title: "Plenty of Penalty's Standard Library",
   authors: (
     "xyrjr233",
     "add10k",

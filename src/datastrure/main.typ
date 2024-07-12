@@ -1,4 +1,5 @@
 #import "../template.typ": *
+#show: styled
 
 == 简单数据结构
 

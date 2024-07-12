@@ -1,4 +1,5 @@
 #import "../template.typ": *
+#show: styled
 
 - 使用 `std` 命名空间。
 - 使用关闭流同步的 `cin` 和 `cout` 进行 IO。

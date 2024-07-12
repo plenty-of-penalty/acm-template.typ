@@ -1,4 +1,5 @@
 #import "../template.typ": *
+#show: styled
 
 == 最小生成树
 

@@ -1,4 +1,5 @@
 #import "../template.typ": *
+#show: styled
 
 #theorem([欧拉定理])[
   若 $gcd(a, m) = 1$，则 $a^(phi(m)) equiv 1 (mod m)$。

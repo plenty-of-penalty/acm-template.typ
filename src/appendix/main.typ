@@ -1,3 +1,6 @@
+#import "../template.typ": *
+#show: styled
+
 == 编辑指南
 #include "edit-tutorial.typ"
 

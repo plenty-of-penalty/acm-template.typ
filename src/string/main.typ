@@ -1,4 +1,5 @@
 #import "../template.typ": *
+#show: styled
 
 == 后缀排序
 #source("string/SA-xry.cpp")
