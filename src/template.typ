@@ -45,11 +45,12 @@
     show list: set block(above: 0.8em, below: 0.8em)
     show heading: set block(above: 0.8em, below: 0.8em)
 
-    set heading(numbering: "1.1.1")
+    set heading(numbering: "1.1.1 ")
 
     show heading: it => {
       if it.level <= 3 {
         it
+        parbreak()
       } else if it.level == 4 {
         parbreak()
         underline(stroke: 0.5pt, offset: 2pt, text(stroke: 0.28pt, text(style: "italic", weight: "regular", it.body)))

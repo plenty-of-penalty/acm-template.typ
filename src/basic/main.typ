@@ -9,13 +9,35 @@
 
 #source("template.cpp")
 
+#[
+  #set heading(outlined: false)
+  
+  === 手动开编译选项
+  ```cpp
+  #pragma GCC optimize("Ofast")
+  #pragma GCC target("lzcnt,popcnt")
+  ```
+
+  === 读入优化
+  ```cpp
+  const int SZ = 1 << 16;
+  int getc() {
+    static char buf[SZ], *ptr = buf, *top = buf;
+    if (ptr == top) {
+      ptr = buf, top = buf + fread(buf, 1, SZ, stdin);
+      if (top == buf) return ‐1;
+    }
+    return *ptr++;
+  }
+  ```
+]
+
 == 编译器配置
 
 #[
   #set heading(outlined: false)
 
   === 编译选项
-
   如果是 Ubuntu 可以直接塞 bashrc 里：
 
   ```bash
@@ -23,7 +45,6 @@
   ```
 
   === 预编译头文件
-
   ```bash
   g++ stdc++.h -g -std=c++17 -O2
   ```
