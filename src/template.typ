@@ -22,72 +22,50 @@
   ..font_sans_serif,
 )
 
+
+#let state_style = state("style", 0)
+
+
 #let styled(body) = {
-  set text(
-    font: font_serif,
-    size: 18pt,
-    lang: "zh",
-  )
-
-  show math.equation: set text(weight: 400)
-
-  show par: set block(above: 0.8em, below: 0.8em)
-  show raw: set block(above: 0.8em, below: 0.8em)
-  show list: set block(above: 0.8em, below: 0.8em)
-  show heading: set block(above: 0.8em, below: 0.8em)
-
-  set heading(numbering: "1.1.1")
-
-  show heading: it => {
-    if it.level > 3 {
-      parbreak()
-      text(11pt, style: "italic", weight: "regular", it.body + ".")
-    } else {
-      it
-    }
-  }
-
-  set par(leading: 0.58em)
-
-  set par(justify: true)
-
-  show raw.where(block: true): it => {
-    let codes = it.text.split("\n")
-    set text(font: font_mono, size: 0.9em)
-
-    set par(justify: false)
-    grid(
-      columns: (100%, 95%),
-      column-gutter: -95%,
-      block(
-        width: 100%,
-        inset: 0em,
-        for i in range(codes.len()) {
-          h(1em)
-          box(
-            width: 0pt,
-            align(
-              right,
-              text(
-                style: "italic",
-                size: 6pt,
-                fill: rgb("#a0a0a0"),
-                str(i + 1) + h(0em),
-              ),
-            ),
-          )
-          hide(codes.at(i))
-          linebreak()
-        },
-      ),
-      block(width: 100%, inset: 0em, it),
+  context {
+    set text(
+      font: font_serif,
+      size: if (state_style.get() == 0) {
+        18pt
+      } else {
+        10pt
+      },
+      lang: "zh",
     )
+
+    show math.equation: set text(weight: 400)
+
+    show par: set block(above: 0.8em, below: 0.8em)
+    show raw: set block(above: 0.8em, below: 0.8em)
+    show list: set block(above: 0.8em, below: 0.8em)
+    show heading: set block(above: 0.8em, below: 0.8em)
+
+    set heading(numbering: "1.1.1")
+
+    show heading: it => {
+      if it.level > 3 {
+        parbreak()
+        text(11pt, style: "italic", weight: "regular", it.body + ".")
+      } else {
+        it
+      }
+    }
+
+    set par(leading: 0.58em)
+
+    set par(justify: true)
+
+    show "。": "．"
+
+    body
   }
-
-  show "。": "．"
-
-  body
 }
+
 
 #let project(title: "", authors: (), special_thanks: (), body) = {
   set document(author: authors, title: title)
@@ -123,8 +101,42 @@
     }
   )
 
+
+  state_style.update(1)
   show: styled
-  set text(size: 10pt)
+
+  show raw.where(block: true): it => {
+    let codes = it.text.split("\n")
+    set text(font: font_mono, size: 0.9em)
+
+    set par(justify: false)
+    grid(
+      columns: (100%, 95%),
+      column-gutter: -95%,
+      block(
+        width: 100%,
+        inset: 0em,
+        for i in range(codes.len()) {
+          h(1em)
+          box(
+            width: 0pt,
+            align(
+              right,
+              text(
+                style: "italic",
+                size: 6pt,
+                fill: rgb("#a0a0a0"),
+                str(i + 1) + h(0em),
+              ),
+            ),
+          )
+          hide(codes.at(i))
+          linebreak()
+        },
+      ),
+      block(width: 100%, inset: 0em, it),
+    )
+  }
 
   align(center)[
     #block(pad(top: 1.6em, bottom: 0.8em, text(weight: 700, 1.75em, title)))
