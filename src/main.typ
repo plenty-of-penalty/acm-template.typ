@@ -17,9 +17,6 @@
 = 基础
 #include "basic/main.typ"
 
-= 常见错误
-#include "bugs/main.typ"
-
 = 数据结构
 #include "datastrure/main.typ"
 

@@ -32,18 +32,20 @@
 
 == K-D Tree
 
+#source("datastrure/动态KDT-antileaf.cpp")
+
 == Link Cut Tree
 
 #source("datastrure/LCT.cpp", namespace: "LCT")
 
-=== 全局平衡二叉树
+== 全局平衡二叉树
 
 == Top Tree
 
 == 析合树
 
+== 珂朵莉树
+
 == 分块
 
 == 莫队
-
-== 珂朵莉树

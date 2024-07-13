@@ -1,20 +1,18 @@
 #import "../template.typ": *
 #show: styled
 
-#theorem([欧拉定理])[
-  若 $gcd(a, m) = 1$，则 $a^(phi(m)) equiv 1 (mod m)$。
-]
+==== 欧拉定理
+若 $gcd(a, m) = 1$，则 $a^(phi(m)) equiv 1 (mod m)$。
 
-#theorem([拓展欧拉定理])[
-  $
-    a^b = cases(
+==== 拓展欧拉定理
+$
+  a^b = cases(
       a^(b mod phi(m))\, &gcd(a, m) = 1\,,
       a^b\, &gcd(a, m) != 1\, b < phi(m)\,,
       a^(b mod phi(m) + phi(m))\, space &gcd(a, m) != -1\, b >= phi(m) \.,
     )
-    space (mod m)
-  $
-]
+  space (mod m)
+$
 
 === 中国剩余定理
 

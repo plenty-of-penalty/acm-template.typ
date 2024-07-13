@@ -1,11 +1,11 @@
-#let font_serif = (
+#let font-serif = (
   "New Computer Modern",
   "Source Han Serif",
   "Source Han Serif SC",
   "Simsun",
   "STSong",
 )
-#let font_sans_serif = (
+#let font-sans-serif = (
   "Helvetica",
   "Arial",
   "Source Han Sans",
@@ -13,24 +13,24 @@
   "Hiragino Sans GB",
   "Noto Sans CJK SC",
   "Heiti",
-  ..font_serif,
+  ..font-serif,
 )
-#let font_mono = (
+#let font-mono = (
   "Cascadia Code",
   "Go Mono",
   "Consolas",
-  ..font_sans_serif,
+  ..font-sans-serif,
 )
 
 
-#let state_style = state("style", 0)
+#let state-style = state("style", 0)
 
 
 #let styled(body) = {
   context {
     set text(
-      font: font_serif,
-      size: if (state_style.get() == 0) {
+      font: font-serif,
+      size: if (state-style.get() == 0) {
         18pt
       } else {
         10pt
@@ -48,11 +48,15 @@
     set heading(numbering: "1.1.1")
 
     show heading: it => {
-      if it.level > 3 {
-        parbreak()
-        text(11pt, style: "italic", weight: "regular", it.body + ".")
-      } else {
+      if it.level <= 3 {
         it
+      } else if it.level == 4 {
+        parbreak()
+        underline(stroke: 0.5pt, offset: 2pt, text(stroke: 0.28pt, text(style: "italic", weight: "regular", it.body)))
+        h(0.5em)
+      } else {
+        parbreak()
+        text(1.1em, style: "italic", weight: "regular", it.body + ".")
       }
     }
 
@@ -61,6 +65,8 @@
     set par(justify: true)
 
     show "。": "．"
+    show "，": ", "
+    show "；": "; "
 
     body
   }
@@ -102,12 +108,12 @@
   )
 
 
-  state_style.update(1)
+  state-style.update(1)
   show: styled
 
   show raw.where(block: true): it => {
     let codes = it.text.split("\n")
-    set text(font: font_mono, size: 0.9em)
+    set text(font: font-mono, size: 0.9em)
 
     set par(justify: false)
     grid(
@@ -153,24 +159,35 @@
   )
 
   {
-    set text(lang: "en")
+    set text(size: 9pt)
 
     show: columns.with(3, gutter: 2em)
     show outline.entry.where(level: 1): it => {
       v(1.2em, weak: true)
       strong(it)
     }
-    outline(indent: n => {
-      if (n == 0) {
-        return 0pt
-      }
-      if (n == 1) {
-        return 1em
-      }
-      if (n == 2) {
-        return 1.5em
-      }
-    })
+    // show outline.entry.where(level: 3): it => {
+    //   let number = it.fields().body.fields().children.at(0).fields().text
+    //   if (number.starts-with("1.3")) {
+    //     v(-1em)
+    //   } else {
+    //     it
+    //   }
+    // }
+    outline(
+      depth: 3,
+      indent: n => {
+        if (n == 0) {
+          return 0pt
+        }
+        if (n == 1) {
+          return 1em
+        }
+        if (n == 2) {
+          return 2em
+        }
+      },
+    )
 
     v(1em)
     strong("Special Thanks to: ")
@@ -231,8 +248,10 @@
 #let desc = strong("Description:")
 #let hint = strong("Hint:")
 #let caution = strong("Caution:")
-#let theorem(name, content) = {
-  underline(stroke: 0.5pt, offset: 2pt, text(stroke: 0.24pt, name))
-  h(0.5em)
-  content
+
+#let bold(x) = {
+  context {
+    set text(stroke: 0.02857em + text.fill)
+    x
+  }
 }

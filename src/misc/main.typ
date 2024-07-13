@@ -11,11 +11,11 @@
 
 == 位运算
 
-=== 枚举子集 $O(3^n)$
+=== 子集枚举
 
 #source("misc/bit/枚举子集.cpp")
 
-=== 子集和 DP（SOS DP）
+=== 子集和 DP
 
 === 手写 bitset
 
@@ -29,9 +29,9 @@
 
 #source("misc/模拟退火.cpp", namespace: "SimulateAnneal")
 
-== 线性递推（BM 算法）$O(n^2)$
+== 线性递推（BM 算法）
 
-#desc 给定 ${a_i}_(i=1)^n$，求最短递推数列使得 $a_n = sum_(i=1)^k f_(n-i) c_i (n > k)$。模 $998244353$。
+#desc 给定 ${a_i}_(i=1)^n$，求最短递推数列使得 $a_n = sum_(i=1)^k f_(n-i) c_i (n > k)$。模 $998244353$。$O(n^2)$。
 
 #source("misc/线性递推.cpp", namespace: "BerlekampMassey")
 

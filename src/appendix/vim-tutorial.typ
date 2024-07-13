@@ -1,3 +1,5 @@
+#set heading(outlined: false)
+
 === 插入模式 (insert)
 
 从普通模式进入插入模式有如下数个键位可选：
