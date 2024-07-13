@@ -10,17 +10,22 @@
 
 == 线段树
 
+=== 线段树上二分
+#desc 分别统计区间 $[l,r]$ 前缀/后缀有多少个数 $<= x$。
+
+#source("datastrure/线段树/线段树上二分.cpp", namespace: "BinarySearchOnSegTree")
+
+=== 标记永久化
+
 === zkw 线段树
 
 === Segtree Beats!
 
-=== 标记永久化
-
-=== 李超树
-
 === 主席树
 
-=== 划分树
+== 李超树
+
+== 划分树
 
 == 平衡树
 
