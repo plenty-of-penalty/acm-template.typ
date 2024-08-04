@@ -10,6 +10,8 @@
   special_thanks: [
     Qingyu,
     Sulfox,
+    fstqwq,
+    Antileaf,
     and seniors from _Zhejiang University_.
   ],
 )
