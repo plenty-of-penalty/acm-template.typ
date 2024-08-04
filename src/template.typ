@@ -248,7 +248,11 @@
 }
 
 #let source(file, namespace: none, lang: none) = {
-  include (file + ".code.typ")
+  if (namespace == none) {
+    include (file + ".code.typ")
+  } else {
+    include (file + "." + namespace + ".code.typ")
+  }
 }
 
 #let usage = strong("Usage:")

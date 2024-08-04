@@ -2,6 +2,6 @@
 #show: styled
 
 == `std::mt19937`
-#include "random.typ"
+#source("stl/mt19937.cpp")
 
 == `std::rope`

@@ -1,4 +1,3 @@
-namespace PAM {
 int t[MAXN][26], fail[MAXN], len[MAXN], size[MAXN];
 int last, tot, now;
 void init() {
@@ -27,4 +26,3 @@ void solve() {
   for (int i = tot; i; --i) size[fail[i]] += size[i], ans = max(ans, ll(size[i]) * len[i]);
   printf("%lld\n", ans);
 }
-} // namespace PAM

@@ -11,7 +11,7 @@
 #source("string/SAM-wh.cpp")
 
 == 回文自动机（add10k）
-#source("string/PAM-wh.cpp", namespace: "PAM")
+#source("string/PAM-wh.cpp")
 
 == Runs
-#source("string/Runs.cpp", namespace: "Runs")
+#source("string/Runs.cpp")

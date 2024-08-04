@@ -16,11 +16,6 @@
   ],
 )
 
-
-```cpp
-#234567890b234567890c234567890d234567890e234567890f234567890
-```
-
 = 基础
 #include "basic/main.typ"
 
@@ -53,3 +48,9 @@
 
 = 附录
 #include "appendix/main.typ"
+
+#v(1fr)
+
+\/\/ 测试高亮渲染
+
+#source("_dev/test-len.cpp")

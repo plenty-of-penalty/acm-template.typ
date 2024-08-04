@@ -103,7 +103,7 @@ int query_max(int u, int l, int r) {
              query_max(u << 1 | 1, p[u].mid + 1, r));
 }
 
-namespace BinarySearchOnSegTree {
+namespace stdlib {
 int count_prefix(int u, int l, int r, int x) {
   if (p[u].l == p[u].r) return p[u].max <= x;
   if (p[u].l == l && p[u].r == r) {
@@ -113,7 +113,7 @@ int count_prefix(int u, int l, int r, int x) {
   if (r <= p[u].mid) return count_prefix(u << 1, l, r, x);
   if (l > p[u].mid) return count_prefix(u << 1 | 1, l, r, x);
   int res = count_prefix(u << 1, l, p[u].mid, x);
-  if (res == p[u].mid - l + 1 /* !!! */) res += count_prefix(u << 1 | 1, p[u].mid + 1, r, x);
+  if (res == p[u].mid - l + 1) res += count_prefix(u << 1 | 1, p[u].mid + 1, r, x); // 判断左侧满足条件的个数是否等于询问区间落在左边的长度
   return res;
 }
 int count_suffix(int u, int l, int r, int x) {
@@ -125,11 +125,11 @@ int count_suffix(int u, int l, int r, int x) {
   if (r <= p[u].mid) return count_suffix(u << 1, l, r, x);
   if (l > p[u].mid) return count_suffix(u << 1 | 1, l, r, x);
   int res = count_suffix(u << 1 | 1, p[u].mid + 1, r, x);
-  if (res == r - p[u].mid /* !!! */) res += count_suffix(u << 1, l, p[u].mid, x);
+  if (res == r - p[u].mid) res += count_suffix(u << 1, l, p[u].mid, x); // 判断右侧满足条件的个数是否等于询问区间落在右边的长度
   return res;
 }
-} // namespace BinarySearchOnSegTree
-using namespace BinarySearchOnSegTree;
+} // namespace stdlib
+using namespace stdlib;
 
 ll query_sum(int u, int k) {
   if (p[u].l == p[u].r) {

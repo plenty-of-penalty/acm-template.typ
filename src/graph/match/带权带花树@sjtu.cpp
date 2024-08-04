@@ -1,25 +1,25 @@
 struct WeightGraph {
   static const int INF = INT_MAX;
-  static const int MAXN = 400;
+  static const int N = 400;
   struct edge {
     int u, v, w;
     edge() {}
     edge(int u, int v, int w) : u(u), v(v), w(w) {}
   };
   int n, n_x;
-  edge g[MAXN * 2 + 1][MAXN * 2 + 1];
-  int lab[MAXN * 2 + 1];
-  int match[MAXN * 2 + 1], slack[MAXN * 2 + 1], st[MAXN * 2 + 1], pa[MAXN * 2 + 1];
-  int flower_from[MAXN * 2 + 1][MAXN + 1], S[MAXN * 2 + 1], vis[MAXN * 2 + 1];
-  vector<int> flower[MAXN * 2 + 1];
+  edge g[N * 2 + 1][N * 2 + 1];
+  int lab[N * 2 + 1];
+  int match[N * 2 + 1], slack[N * 2 + 1], st[N * 2 + 1], pa[N * 2 + 1];
+  int flower_from[N * 2 + 1][N + 1], S[N * 2 + 1], vis[N * 2 + 1];
+  vector<int> flower[N * 2 + 1];
   queue<int> q;
-  inline int e_delta(const edge &e) { // does not work inside blossoms
+  int e_delta(const edge &e) { // does not work inside blossoms
     return lab[e.u] + lab[e.v] - g[e.u][e.v].w * 2;
   }
-  inline void update_slack(int u, int x) {
+  void update_slack(int u, int x) {
     if (!slack[x] || e_delta(g[u][x]) < e_delta(g[slack[x]][x])) slack[x] = u;
   }
-  inline void set_slack(int x) {
+  void set_slack(int x) {
     slack[x] = 0;
     for (int u = 1; u <= n; ++u)
       if (g[u][x].w > 0 && st[u] != x && S[st[u]] == 0) update_slack(u, x);
@@ -29,12 +29,12 @@ struct WeightGraph {
     else
       for (size_t i = 0; i < flower[x].size(); i++) q_push(flower[x][i]);
   }
-  inline void set_st(int x, int b) {
+  void set_st(int x, int b) {
     st[x] = b;
     if (x > n)
       for (size_t i = 0; i < flower[x].size(); ++i) set_st(flower[x][i], b);
   }
-  inline int get_pr(int b, int xr) {
+  int get_pr(int b, int xr) {
     int pr = find(flower[b].begin(), flower[b].end(), xr) - flower[b].begin();
     if (pr % 2 == 1) {
       reverse(flower[b].begin() + 1, flower[b].end());
@@ -42,7 +42,7 @@ struct WeightGraph {
     } else
       return pr;
   }
-  inline void set_match(int u, int v) {
+  void set_match(int u, int v) {
     match[u] = g[u][v].v;
     if (u > n) {
       edge e = g[u][v];
@@ -52,7 +52,7 @@ struct WeightGraph {
       rotate(flower[u].begin(), flower[u].begin() + pr, flower[u].end());
     }
   }
-  inline void augment(int u, int v) {
+  void augment(int u, int v) {
     for (;;) {
       int xnv = st[match[u]];
       set_match(u, v);
@@ -61,7 +61,7 @@ struct WeightGraph {
       u = st[pa[xnv]], v = xnv;
     }
   }
-  inline int get_lca(int u, int v) {
+  int get_lca(int u, int v) {
     static int t = 0;
     for (++t; u || v; swap(u, v)) {
       if (u == 0) continue;
@@ -72,7 +72,7 @@ struct WeightGraph {
     }
     return 0;
   }
-  inline void add_blossom(int u, int lca, int v) {
+  void add_blossom(int u, int lca, int v) {
     int b = n + 1;
     while (b <= n_x && st[b]) ++b;
     if (b > n_x) ++n_x;
@@ -99,7 +99,7 @@ struct WeightGraph {
     }
     set_slack(b);
   }
-  inline void expand_blossom(int b) { // S[b]  ==  1
+  void expand_blossom(int b) { // S[b]==1
     for (size_t i = 0; i < flower[b].size(); ++i) set_st(flower[b][i], flower[b][i]);
     int xr = flower_from[b][g[b][pa[b]].u], pr = get_pr(b, xr);
     for (int i = 0; i < pr; i += 2) {
@@ -116,7 +116,7 @@ struct WeightGraph {
     }
     st[b] = 0;
   }
-  inline bool on_found_edge(const edge &e) {
+  bool on_found_edge(const edge &e) {
     int u = st[e.u], v = st[e.v];
     if (S[v] == -1) {
       pa[v] = e.u, S[v] = 1;
@@ -131,7 +131,7 @@ struct WeightGraph {
     }
     return false;
   }
-  inline bool matching() {
+  bool matching() {
     memset(S + 1, -1, sizeof(int) * n_x);
     memset(slack + 1, 0, sizeof(int) * n_x);
     q = queue<int>();
@@ -182,11 +182,11 @@ struct WeightGraph {
     }
     return false;
   }
-  inline pair<long long, int> solve() {
+  pair<ll, int> solve() {
     memset(match + 1, 0, sizeof(int) * n);
     n_x = n;
     int n_matches = 0;
-    long long tot_weight = 0;
+    ll tot_weight = 0;
     for (int u = 0; u <= n; ++u) st[u] = u, flower[u].clear();
     int w_max = 0;
     for (int u = 1; u <= n; ++u)
@@ -200,7 +200,7 @@ struct WeightGraph {
       if (match[u] && match[u] < u) tot_weight += g[u][match[u]].w;
     return make_pair(tot_weight, n_matches);
   }
-  inline void init() {
+  void init() {
     for (int u = 1; u <= n; ++u)
       for (int v = 1; v <= n; ++v) g[u][v] = edge(u, v, 0);
   }

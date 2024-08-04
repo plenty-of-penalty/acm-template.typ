@@ -4,16 +4,16 @@
 == 简单数据结构
 
 === 可删堆
-#source("datastrure/简单数据结构/可删堆.cpp", namespace: "DeletableHeap")
+#source("datastrure/简单数据结构/可删堆.cpp")
 
 === 哈希表
 
 == 线段树
 
 === 线段树上二分
-#desc 分别统计区间 $[l,r]$ 前缀/后缀有多少个数 $<= x$。
+#desc 线段树的每个位置上存一个每次查询区间 $[l,r]$ 的连续前缀/后缀有多少个数 $<= x$。（注意如果查询 $>=$ 则应记录 `min`。）
 
-#source("datastrure/线段树/线段树上二分.cpp", namespace: "BinarySearchOnSegTree")
+#source("datastrure/线段树/线段树上二分.cpp")
 
 === 标记永久化
 
@@ -36,12 +36,10 @@
 == 树套树
 
 == K-D Tree
-
-#source("datastrure/动态KDT-antileaf.cpp")
+#source("datastrure/动态KDT.cpp")
 
 == Link Cut Tree
-
-#source("datastrure/LCT.cpp", namespace: "LCT")
+#source("datastrure/LCT.cpp")
 
 == 全局平衡二叉树
 

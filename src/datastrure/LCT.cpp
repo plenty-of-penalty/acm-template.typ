@@ -2,7 +2,7 @@
 using namespace std;
 typedef long long ll;
 const int N = 200011;
-namespace LCT {
+namespace stdlib {
 int fa[N], son[N][2], s[N];
 bool rev[N];
 bool not_root(int x) { return son[fa[x]][0] == x || son[fa[x]][1] == x; }
@@ -62,8 +62,8 @@ void cut(int x, int y) {
     fprintf(stderr, "Error: Cut (%d,%d) failed!\n", x, y);
   }
 }
-} // namespace LCT
-using namespace LCT;
+} // namespace stdlib
+using namespace stdlib;
 typedef pair<int, int> pii;
 pii ed[N];
 int f[N];

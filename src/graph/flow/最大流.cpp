@@ -60,7 +60,7 @@ void add(int u, int v, int w) {
 }
 ll solve(int _s, int _t) {
   s = _s, t = _t;
-  dep.resize(hed.size());
+  dep.resize(hed.size()); // !
   ll ans = 0;
   while (bfs()) {
     cur = hed;

@@ -3,7 +3,7 @@
 #include <bits/stdc++.h>
 using ll = long long;
 using namespace std;
-namespace Runs {
+namespace stdlib {
 const int N = 1e6 + 10, p0 = 998244353, p1 = 1e9 + 7, px = 131131;
 int n, c, top, la[N], h0[N], h1[N], pw0[N], pw1[N], stk[N];
 string s;
@@ -75,8 +75,8 @@ vector<tuple<int, int, int>> getRuns(const string &_s) {
   runs.erase(unique(runs.begin(), runs.end()), runs.end());
   return runs;
 }
-} // namespace Runs
-using namespace Runs;
+} // namespace stdlib
+using namespace stdlib;
 int main() {
 #ifdef memset0
   freopen("runs.in", "r", stdin);

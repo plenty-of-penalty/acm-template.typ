@@ -1,7 +1,9 @@
+/**
+ * @author antileaf
+ */
 int l[2], r[2], x[B + 10][2], w[B + 10];
 int n, op, ans = 0, cnt = 0, tmp = 0;
 int d;
-
 struct node {
   int x[2], l[2], r[2], w, sum;
   node *ch[2];
@@ -14,7 +16,6 @@ struct node {
     r[1] = max(x[1], max(ch[0]->r[1], ch[1]->r[1]));
   }
 } null[N], *root = null;
-
 void build(int l, int r, int k, node *&rt) {
   if (l > r) {
     rt = null;
@@ -27,7 +28,6 @@ void build(int l, int r, int k, node *&rt) {
   build(mid + 1, r, k ^ 1, rt->ch[1]);
   rt->refresh();
 }
-
 void query(node *rt) {
   if (l[0] <= rt->l[0] && l[1] <= rt->l[1] && rt->r[0] <= r[0] && rt->r[1] <= r[1]) {
     ans += rt->sum;
@@ -38,7 +38,6 @@ void query(node *rt) {
   query(rt->ch[0]);
   query(rt->ch[1]);
 }
-
 int main() {
   null->l[0] = null->l[1] = 10000000;
   null->r[0] = null->r[1] = -10000000;

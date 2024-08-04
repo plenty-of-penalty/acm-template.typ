@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
-namespace DeletableHeap {
-template <class T> struct DeletableHeap {
+namespace stdlib {
+template <class T> struct stdlib {
   priority_queue<T> p, q;
   inline void maintain() {
     while (!q.empty() && p.top() == q.top()) p.pop(), q.pop();
@@ -12,7 +12,7 @@ template <class T> struct DeletableHeap {
   T top() { return p.top(); }
   bool empty() { return p.empty(); }
 };
-} // namespace DeletableHeap
+} // namespace stdlib
 int main() {
 #ifdef memset0
   freopen("1.in", "r", stdin);
