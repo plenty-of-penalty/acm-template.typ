@@ -16,8 +16,8 @@
   ..font-serif,
 )
 #let font-mono = (
-  "Cascadia Code",
   "Go Mono",
+  "Cascadia Code",
   "Consolas",
   ..font-sans-serif,
 )
@@ -78,6 +78,7 @@
   set document(author: authors, title: title)
   set page(
     margin: (left: 8mm, right: 8mm, top: 12mm, bottom: 8mm),
+    flipped: true,
     numbering: "1",
     number-align: center,
 
@@ -162,7 +163,7 @@
   {
     set text(size: 9pt)
 
-    show: columns.with(3, gutter: 2em)
+    show: columns.with(5, gutter: 2em)
     show outline.entry.where(level: 1): it => {
       v(1.2em, weak: true)
       strong(it)
@@ -175,6 +176,8 @@
     //     it
     //   }
     // }
+    // 
+    set text(size: 0.95em)
     outline(
       depth: 3,
       indent: n => {
@@ -194,16 +197,16 @@
     strong("Special Thanks to: ")
     special_thanks
 
-    v(2em)
+    v(1em)
     set align(center)
-    set text(size: 1.2em, weight: 800)
+    set text(size: 1.1em, weight: 800)
     [
       Good Luck & Have Fun!
     ]
   }
   pagebreak(weak: true)
   {
-    show: columns.with(2, gutter: 0.5em)
+    show: columns.with(3, gutter: 0.5em)
     body
   }
 }
