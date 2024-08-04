@@ -2,7 +2,7 @@
  * cp-highlight.js
  *
  * @author memset0s
- * @version 0.3.0
+ * @version 0.4.0
  * @date 20240804
  */
 
@@ -120,14 +120,16 @@ const default_theme = {
   text: 'normal',
   keyword: 'bold',
   type: 'bold',
-  operator: 'highlight',
-  macro: 'underlined',
+  operator: 'red',
+  macro: 'green',
   comments: 'underlined',
   hinter: '→',
   extend: 2,
   tabSize: 2,
-  cnLen: 1.501,
+  cnLen: 2,
   hinterLen: 1,
+  header: '',
+  footer: '',
 };
 
 function isChineseChar(char) {
@@ -142,13 +144,15 @@ function isAlpha(char) {
 }
 
 const typstAdapter = function (data, theme) {
-	theme = { ...default_theme, ...theme };
-	
+  theme = { ...default_theme, ...theme };
+
   const table = {
     normal: 'T',
-    grey: 'G',
-    highlight: 'H',
-    bold: 'B',
+    grey: 'Y',
+    red: 'R',
+    blue: 'B',
+    green: 'G',
+    bold: 'S',
     italic: 'I',
     underlined: 'U',
   };
@@ -156,9 +160,11 @@ const typstAdapter = function (data, theme) {
   result += '#{\n';
   result += theme.header + '\n';
   result += 'let T(x) = text(x)\n';
-  result += 'let G(x) = text(x, fill: luma(160))\n';
-  result += 'let H(x) = text(x, fill: color.red)\n';
-  result += 'let B(x) = text(x, weight: 900)\n';
+  result += 'let Y(x) = text(x, fill: luma(160))\n';
+  result += 'let R(x) = text(x, fill: color.red)\n';
+  result += 'let G(x) = text(x, fill: color.green)\n';
+  result += 'let B(x) = text(x, fill: color.blue)\n';
+  result += 'let S(x) = text(x, weight: 900)\n';
   result += 'let I(x) = text(x)\n';
   result += 'let U(x) = underline(stroke: 1pt, offset: 2pt, text(x))\n';
   for (const item of data) {
@@ -171,6 +177,7 @@ const typstAdapter = function (data, theme) {
         .replace(/\"/g, '\\"') +
       '")\n';
   }
+  result += theme.footer + '\n';
   result += '}';
   return result;
 };
@@ -217,7 +224,7 @@ function render(source, lineLimit, lang, theme) {
         });
         break;
       }
-      if (isAlpha(char)) {
+      if (isAlpha(char) || char == '_') {
         pattern += char;
       } else {
         if (pattern.length > 0) {
@@ -287,8 +294,8 @@ function fullRender(source, options = {}) {
   options = {
     lineLimit: 64,
     lang: 'cpp',
-		adapter: typstAdapter,
-		theme: {},
+    adapter: typstAdapter,
+    theme: {},
     ...options,
   };
   const rendered = render(source, options.lineLimit, options.lang, options.theme);
