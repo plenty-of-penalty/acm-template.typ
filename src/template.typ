@@ -31,7 +31,7 @@
     set text(
       font: font-serif,
       size: if (state-style.get() == 0) {
-        18pt
+        17pt
       } else {
         10pt
       },
@@ -176,7 +176,7 @@
     //     it
     //   }
     // }
-    // 
+    //
     set text(size: 0.95em)
     outline(
       depth: 3,
@@ -211,7 +211,7 @@
   }
 }
 
-#let source(file, namespace: none, lang: "cpp") = {
+#let source_old(file, namespace: none, lang: "cpp") = {
   let source_code = read(file)
   let code = ""
   let note = ""
@@ -245,6 +245,10 @@
     code = "// no code"
   }
   raw(lang: lang, block: true, code)
+}
+
+#let source(file, namespace: none, lang: none) = {
+  include (file + ".code.typ")
 }
 
 #let usage = strong("Usage:")

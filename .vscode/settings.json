@@ -1,6 +1,7 @@
 {
 	"files.exclude": {
 		"**/*.pdf": true,
+		"**/*.code.typ": true,
 		"**/*.exe": true,
 	}
 }

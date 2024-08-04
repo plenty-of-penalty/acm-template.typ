@@ -2,7 +2,7 @@
  * cp-highlight.js
  *
  * @author memset0s
- * @version 0.1.0
+ * @version 0.3.0
  * @date 20240804
  */
 
@@ -115,7 +115,7 @@ const cpp_keywords = [
   'pi', // pair<int, int>
 ];
 
-const theme = {
+const default_theme = {
   space: 'space',
   text: 'normal',
   keyword: 'bold',
@@ -141,7 +141,9 @@ function isAlpha(char) {
   );
 }
 
-const typstAdapter = function (data) {
+const typstAdapter = function (data, theme) {
+	theme = { ...default_theme, ...theme };
+	
   const table = {
     normal: 'T',
     grey: 'G',
@@ -152,7 +154,7 @@ const typstAdapter = function (data) {
   };
   let result = '';
   result += '#{\n';
-  result += 'set text(font: font-mono)\n';
+  result += theme.header + '\n';
   result += 'let T(x) = text(x)\n';
   result += 'let G(x) = text(x, fill: luma(160))\n';
   result += 'let H(x) = text(x, fill: color.red)\n';
@@ -161,16 +163,21 @@ const typstAdapter = function (data) {
   result += 'let U(x) = underline(stroke: 1pt, offset: 2pt, text(x))\n';
   for (const item of data) {
     result +=
-      table[item.style] + //
-      '("' + //
-      item.text.replace(/\n/g, '\\n') + //
+      table[item.style] +
+      '("' +
+      item.text
+        .replace(/\\/g, '\\\\') //
+        .replace(/\n/g, '\\n') //
+        .replace(/\"/g, '\\"') +
       '")\n';
   }
   result += '}';
   return result;
 };
 
-function render(source, lineLimit = 16) {
+function render(source, lineLimit, lang, theme) {
+  theme = { ...default_theme, ...theme };
+
   const result = [];
 
   function push_back(style, text) {
@@ -276,20 +283,38 @@ function render(source, lineLimit = 16) {
   return result;
 }
 
-function fullRender(source, adapter = typstAdapter) {
-  const rendered = render(source);
-  const result = adapter(rendered);
+function fullRender(source, options = {}) {
+  options = {
+    lineLimit: 64,
+    lang: 'cpp',
+		adapter: typstAdapter,
+		theme: {},
+    ...options,
+  };
+  const rendered = render(source, options.lineLimit, options.lang, options.theme);
+  const result = options.adapter(rendered, options.theme);
   return result;
 }
 
-console.log(
-  fullRender(`#include <bits/stdc++.h>
+module.exports = {
+  cpp_keywords,
+  render,
+  fullRender,
+};
+
+if (require.main == module) {
+  console.log(
+    fullRender(`#include <bits/stdc++.h>
 using namespace std;
 int main() {
+	#ifdef memset0
+		freopen("1.in", "r", stdin);
+	#endif
 	cin.tie(0)->sync_with_stdio(0);
 	int a, b;
 	cin >> a >> b; // 输入两个数
 	cout << a + b << endl;
 	return 0;
 }`)
-);
+  );
+}
