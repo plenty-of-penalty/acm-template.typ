@@ -248,6 +248,7 @@
 #let note = strong("Note:")
 #let desc = strong("Description:")
 #let hint = strong("Hint:")
+#let time = strong("Time:")
 #let caution = strong("Caution:")
 
 #let bold(x) = {
