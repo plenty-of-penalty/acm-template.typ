@@ -3,7 +3,9 @@
 
 == 最小生成树
 
-=== Boruvka 算法 $O(m log n)$
+=== Boruvka 算法
+
+#time $O(m log n)$
 
 要求给定图的边权两两不同。一般来说，我们可以给相同权值的边增加第二关键字使其满足条件。
 
@@ -48,12 +50,10 @@
 == 2-SAT
 
 == 网络流
-
 #include "flow/main.typ"
 
-== 一般图最大匹配
-
-== 一般图最大权匹配
+== 一般图匹配
+#include "match/main.typ"
 
 == 欧拉图
 
