@@ -19,7 +19,7 @@ template <const int p> void init(int *h) {
 }
 inline bool equal(int l0, int r0, int l1, int r1) {
   if (((ll)h0[l0] * pw0[r0 - l0 + 1] - h0[r0 + 1] - (ll)h0[l1] * pw0[r1 - l1 + 1] + h0[r1 + 1]) % p0) return false;
-  //  if(((ll)h1[l0]*pw1[r0-l0+1]-h1[r0+1]-(ll)h1[l1]*pw1[r1-l1+1]+h1[r1+1])%p1) return false;
+  if (((ll)h1[l0] * pw1[r0 - l0 + 1] - h1[r0 + 1] - (ll)h1[l1] * pw1[r1 - l1 + 1] + h1[r1 + 1]) % p1) return false;
   return true;
 }
 inline bool diff(int la, int ra, int lb, int rb) {
@@ -60,10 +60,10 @@ vector<tuple<int, int, int>> getRuns(const string &_s) {
   vector<tuple<int, int, int>> runs;
   s = _s, n = s.length();
   initpow<p0>(pw0);
-  //  initpow<p1>(pw1);
+  initpow<p1>(pw1);
   for (int _ = 0; _ < 2; _++) {
     init<p0>(h0);
-    //    init<p1>(h1);
+    init<p1>(h1);
     lyndon(la);
     for (int i = 0, j, l, r; i < n; i++) {
       j = la[i], l = i - lcs(i - 1, j), r = j + lcp(i, j + 1);

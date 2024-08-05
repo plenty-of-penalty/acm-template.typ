@@ -1,22 +1,25 @@
-// https://uoj.ac/problem/622
+/**
+ * @link https://uoj.ac/problem/622
+ */
 
 #include <bits/stdc++.h>
 using namespace std;
+using ll = long long;
 
 const int N = 3e5 + 9;
 int n, m, s;
 vector<pair<int, int>> G[N];
 
-const long long inf = 0x6363636363636363;
-namespace dijkstra {
-long long dis[N];
-priority_queue<pair<long long, int>> q;
-void dij(int s) { // 求点 s 到每个点的最短路
+const ll inf = 0x6363636363636363;
+namespace stdlib {
+ll dis[N];
+priority_queue<pair<ll, int>> q;
+void dij(int s) {
   fill(dis + 1, dis + n + 1, inf);
   dis[s] = 0, q.push({0, s});
   while (q.size()) {
     auto [d, u] = q.top();
-    q.pop(); // 坑：上行不能用 auto&，因为这里释放了地址
+    q.pop(); // 上行不能用auto&,因为在这里释放了地址
     if (dis[u] + d) continue;
     for (const auto &[v, w] : G[u]) {
       if (dis[u] + w < dis[v]) {
@@ -26,8 +29,8 @@ void dij(int s) { // 求点 s 到每个点的最短路
     }
   }
 }
-} // namespace dijkstra
-using namespace dijkstra;
+} // namespace stdlib
+using namespace stdlib;
 
 int main() {
 #ifdef memset0

@@ -1,23 +1,23 @@
 #include <bits/stdc++.h>
 typedef long long ll;
 typedef __int128 I128;
-const int MAXN = 20, mod = 998244353;
+const int N = 20, mod = 998244353;
 struct matrix {
-  int a[MAXN][MAXN];
+  int a[N][N];
   matrix() { memset(a, 0, sizeof a); }
-  matrix(int tp[MAXN][MAXN]) { memcpy(a, tp, sizeof a); }
+  matrix(int tp[N][N]) { memcpy(a, tp, sizeof a); }
   matrix operator*(const matrix &you) const {
-    static int tp[MAXN][MAXN];
+    static int tp[N][N];
     memset(tp, 0, sizeof tp);
-    for (int i = 0; i < MAXN; ++i)
-      for (int k = 0; k < MAXN; ++k)
-        for (int j = 0; j < MAXN; ++j) tp[i][j] = (tp[i][j] + ll(a[i][k]) * you.a[k][j]) % mod;
+    for (int i = 0; i < N; ++i)
+      for (int k = 0; k < N; ++k)
+        for (int j = 0; j < N; ++j) tp[i][j] = (tp[i][j] + ll(a[i][k]) * you.a[k][j]) % mod;
     return tp;
   }
   matrix operator+(const matrix &you) const {
-    static int tp[MAXN][MAXN];
-    for (int i = 0; i < MAXN; ++i)
-      for (int j = 0; j < MAXN; ++j) tp[i][j] = (a[i][j] + you.a[i][j]) % mod;
+    static int tp[N][N];
+    for (int i = 0; i < N; ++i)
+      for (int j = 0; j < N; ++j) tp[i][j] = (a[i][j] + you.a[i][j]) % mod;
     return tp;
   }
 } I, A, B;

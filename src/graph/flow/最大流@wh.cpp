@@ -1,14 +1,14 @@
 struct Edge {
   ll v, w, nxt;
-} e[MAXN << 3 | 1];
-ll cnt = 1, last[MAXN];
+} e[N << 3 | 1];
+ll cnt = 1, last[N];
 void adde(ll u, ll v, ll w) {
   ++cnt;
   e[cnt].v = v, e[cnt].w = w;
   e[cnt].nxt = last[u], last[u] = cnt;
 }
 void insert(ll u, ll v, ll w) { adde(u, v, w), adde(v, u, 0); }
-ll dep[MAXN], cur[MAXN];
+ll dep[N], cur[N];
 queue<ll> q;
 bool bfs(ll s, ll t, ll n) {
   for (ll i = 1; i <= n; ++i) cur[i] = last[i], dep[i] = 0;

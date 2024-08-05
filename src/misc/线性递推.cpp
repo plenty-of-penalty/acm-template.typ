@@ -1,8 +1,10 @@
-// https://qoj.ac/problem/547
+/**
+ * @link https://qoj.ac/problem/547
+ */
 
 #include <bits/stdc++.h>
-#define ll long long
 using namespace std;
+using ll = long long;
 const int mod = 998244353;
 inline int sub(int x, int y) { return x -= y, x < 0 ? x + mod : x; }
 inline int add(int x, int y) { return x += y, x >= mod ? x - mod : x; }

@@ -1,15 +1,15 @@
 struct Edge {
   ll v, w, cost, nxt;
 } e[MAXM << 1 | 1];
-ll cnt = 1, last[MAXN];
+ll cnt = 1, last[N];
 void adde(ll u, ll v, ll w, ll c) {
   ++cnt;
   e[cnt].v = v, e[cnt].w = w, e[cnt].cost = c;
   e[cnt].nxt = last[u], last[u] = cnt;
 }
 void insert(ll u, ll v, ll w, ll c) { adde(u, v, w, c), adde(v, u, 0, -c); }
-ll dis[MAXN], cur[MAXN];
-bool vis[MAXN], inqueue[MAXN];
+ll dis[N], cur[N];
+bool vis[N], inqueue[N];
 queue<ll> q;
 bool spfa(ll s, ll t, ll n) {
   for (ll i = 1; i <= n; ++i) dis[i] = -INF, cur[i] = last[i];

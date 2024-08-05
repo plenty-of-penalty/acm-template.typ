@@ -31,7 +31,7 @@
 
 #note 求稀疏图所有点对最短路，Dijkstra 较 Floyd 表现更优。
 
-#source("graph/最短路-dijkstra.cpp", namespace: "dijkstra")
+#source("graph/最短路-dijkstra.cpp")
 
 === Floyd 算法
 

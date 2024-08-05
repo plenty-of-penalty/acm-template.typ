@@ -1,8 +1,6 @@
-const int N = 1e5;
-int n;
-char S[N + 10];
-int M = 26, sz, rk[N + 10], ar[N + 10], sa[N + 10], nw, ba[N + 10];
-int he[N + 10];
+const int N = 1e5 + 9;
+int n, sz, M, rk[N], ar[N], sa[N], nw, ba[N], he[N];
+char S[N];
 void Getsa() {
   for (int i = 1; i <= M; ++i) ba[i] = 0;
   for (int i = 1; i <= n; ++i) ++ba[rk[i]];

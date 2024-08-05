@@ -1,6 +1,6 @@
 #include <bits/stdc++.h>
-#define ll long long
 using namespace std;
+using ll = long long;
 
 namespace ModulusOperations {
 const int mod = 998244353;

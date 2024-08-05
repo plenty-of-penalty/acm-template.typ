@@ -1,4 +1,4 @@
-int t[MAXN][26], fail[MAXN], len[MAXN], size[MAXN];
+int t[N][26], fail[N], len[N], size[N];
 int last, tot, now;
 void init() {
   len[0] = -1;

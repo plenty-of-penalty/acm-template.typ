@@ -1,5 +1,5 @@
 // 使用chrono库获得毫秒级时间
-long long seed = chrono::steady_clock::now().time_since_epoch().count();
+auto seed = chrono::steady_clock::now().time_since_epoch().count();
 mt19937 rng(seed);
 mt19937_64 rng64(seed);
 // 使用uniform_int_distribution生成区间均匀随机分布的整数

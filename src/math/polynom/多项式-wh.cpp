@@ -13,8 +13,8 @@ ll Qpow(ll a, ll p) {
   }
   return res;
 }
-const int MAXN = 525011;
-int fac[MAXN], Ifac[MAXN], inv[MAXN], RT[MAXN], rev[MAXN];
+const int N = 525011;
+int fac[N], Ifac[N], inv[N], RT[N], rev[N];
 int init(int n) {
   // n is the max length of all polys(include results)
   int len = 1;
@@ -50,7 +50,7 @@ void IDFT(int *a, int n) {
   for (int i = 0; i < n; ++i) a[i] = ll(a[i]) * inv[n] % mod;
 }
 void Mul(int *f, int *g, int *res, int n, int m) {
-  static int tf[MAXN], tg[MAXN];
+  static int tf[N], tg[N];
   int len = 1;
   while (len <= n + m + 1) len <<= 1;
   for (int i = 0; i < len; ++i) tf[i] = tg[i] = 0;
@@ -65,8 +65,8 @@ void Mul(int *f, int *g, int *res, int n, int m) {
 } // namespace polynom
 using namespace polynom;
 namespace DC_NTT {
-int f[MAXN], g[MAXN];
-int tf[MAXN], tg[MAXN], res[MAXN];
+int f[N], g[N];
+int tf[N], tg[N], res[N];
 void solve(int l, int r) {
   if (l + 1 == r) {
     f[l] = S(f[l] + Ifac[l]);
@@ -110,7 +110,7 @@ int main() {
   return 0;
 }
 } // namespace DC_NTT
-int f[MAXN], g[MAXN];
+int f[N], g[N];
 int main() {
   int n, m;
   scanf("%d%d", &n, &m);

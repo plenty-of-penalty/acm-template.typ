@@ -55,32 +55,32 @@ void Gauss(int A[][N], int B[][N], int n) {
         }
       if (!A[i][i]) continue;
     }
-    int inv = qpow(A[i][i], p - 2);
+    int inv = power(A[i][i], p - 2);
     for (int j = 1; j <= n; j++)
       if (i != j && A[j][i]) {
-        int t = (long long)A[j][i] * inv % p;
+        int t = (ll)A[j][i] * inv % p;
         for (int k = i; k <= n; k++)
-          if (A[i][k]) A[j][k] = (A[j][k] - (long long)t * A[i][k]) % p;
+          if (A[i][k]) A[j][k] = (A[j][k] - (ll)t * A[i][k]) % p;
         if (B)
           for (int k = 1; k <= n; k++)
-            if (B[i][k]) B[j][k] = (B[j][k] - (long long)t * B[i][k]) % p;
+            if (B[i][k]) B[j][k] = (B[j][k] - (ll)t * B[i][k]) % p;
       }
   }
   if (B)
     for (int i = 1; i <= n; i++) {
-      int inv = qpow(A[i][i], p - 2);
+      int inv = power(A[i][i], p - 2);
       for (int j = 1; j <= n; j++)
-        if (B[i][j]) B[i][j] = (long long)B[i][j] * inv % p;
+        if (B[i][j]) B[i][j] = (ll)B[i][j] * inv % p;
     }
 }
 // 消去一行一列 O(n^2)
 void eliminate(int r, int c) {
   row[r] = col[c] = true; // 已经被消掉
-  int inv = qpow(B[r][c], p - 2);
+  int inv = power(B[r][c], p - 2);
   for (int i = 1; i <= n; i++)
     if (!row[i] && B[i][c]) {
-      int t = (long long)B[i][c] * inv % p;
+      int t = (ll)B[i][c] * inv % p;
       for (int j = 1; j <= n; j++)
-        if (!col[j] && B[r][j]) B[i][j] = (B[i][j] - (long long)t * B[r][j]) % p;
+        if (!col[j] && B[r][j]) B[i][j] = (B[i][j] - (ll)t * B[r][j]) % p;
     }
 }

@@ -1,6 +1,12 @@
 #include "bits/stdc++.h"
+#ifdef popteam
+#define log(...) fprintf(stderr, __VA_ARGS__)
+#else
+#define log(...) void(0)
+#define endl '\n'
+#endif
 using namespace std;
-typedef long long ll;
+using ll = long long;
 const int N = 200011;
 namespace stdlib {
 int fa[N], son[N][2], s[N];
@@ -59,7 +65,7 @@ void cut(int x, int y) {
   if (son[x][1] == y && !son[y][0] && !son[y][1]) {
     son[x][1] = fa[y] = 0;
   } else {
-    fprintf(stderr, "Error: Cut (%d,%d) failed!\n", x, y);
+    log("Error: Cut (%d,%d) failed!\n", x, y);
   }
 }
 } // namespace stdlib
