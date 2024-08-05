@@ -25,17 +25,15 @@ $
 === 连分数
 
 === 数论分块
-
-#usage 可以 $O(1)$ 计算 $f(r)-f(l)$，则可以 $O(sqrt(n))$ 计算 $sum_(i=1)^n f(i) g(floor(n/i))$。
+#usage 可以 $O(1)$ 计算 $sum_(i=l)^r f(i)$，则可以 $O(sqrt(n))$ 计算 $sum_(i=1)^n f(i) g(floor(n/i))$。
 
 #caution 注意一些 $i=0$ 的情况。
 
-#source("math/number-theory/数论分块.cpp", namespace: "sqrt_decomposition")
+#source("math/number-theory/数论分块.cpp")
 
 === $n$ 维数论分块
 
 === 类欧几里得
 
 === 万能欧几里得
-
 #source("math/number-theory/万能欧几里得.cpp")
