@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 namespace stdlib {
-template <class T> struct stdlib {
+template <class T> struct DHeap {
   priority_queue<T> p, q;
   inline void maintain() {
     while (!q.empty() && p.top() == q.top()) p.pop(), q.pop();

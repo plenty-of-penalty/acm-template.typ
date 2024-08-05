@@ -11,25 +11,12 @@
 
 #[
   #set heading(outlined: false)
-  
-  === 手动开编译选项
-  ```cpp
-  #pragma GCC optimize("Ofast")
-  #pragma GCC target("lzcnt,popcnt")
-  ```
 
-  === 读入优化
-  ```cpp
-  const int SZ = 1 << 16;
-  int getc() {
-    static char buf[SZ], *ptr = buf, *top = buf;
-    if (ptr == top) {
-      ptr = buf, top = buf + fread(buf, 1, SZ, stdin);
-      if (top == buf) return ‐1;
-    }
-    return *ptr++;
-  }
-  ```
+  === 手动开编译选项
+  #source("basic/编译选项.hpp")
+
+  === 读入优化、
+  #source("basic/读入优化.hpp")
 ]
 
 == 编译器配置

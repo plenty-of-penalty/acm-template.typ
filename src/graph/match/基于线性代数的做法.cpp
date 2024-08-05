@@ -1,7 +1,7 @@
 ﻿const int N = 505, p = 1000000007;
 int A[N][N], B[N][N], t[N][N], id[N], a[N];
 bool row[N] = {false}, col[N] = {false};
-int n, m, girl[N]; // girl是匹配点, 用来输出方案
+int n, m, girl[N]; // girl是匹配点,用来输出方案
 int main() {
   srand(19260817);
   scanf("%d%d", &n, &m); // 点数和边数
@@ -11,7 +11,7 @@ int main() {
     A[x][y] = rand() % p;
     A[y][x] = -A[x][y]; // Tutte矩阵是反对称矩阵
   }
-  for (int i = 1; i <= n; i++) id[i] = i; // 输出方案用的, 因为高斯消元的时候会交换列
+  for (int i = 1; i <= n; i++) id[i] = i; // 输出方案用的,因为高斯消元的时候会交换列
   memcpy(t, A, sizeof(t));
   Gauss(A, NULL, n);
   m = n;
@@ -25,8 +25,7 @@ int main() {
     if (!girl[a[i]])
       for (int j = i + 1; j <= n; j++)
         if (!girl[a[j]] && t[a[i]][a[j]] && B[j][i]) {
-          // 注意上面那句if的写法, 现在t是邻接矩阵的备份,
-          // 逆矩阵j行i列不为0当且仅当这条边可行
+          // 注意上面那句if的写法,现在t是邻接矩阵的备份,逆矩阵j行i列不为0当且仅当这条边可行
           girl[a[i]] = a[j];
           girl[a[j]] = a[i];
           eliminate(i, j);
@@ -37,7 +36,7 @@ int main() {
   for (int i = 1; i <= m; i++) printf("%d ", girl[i]);
 }
 // 高斯消元 O(n^3)
-// 在传入B时表示计算逆矩阵, 传入NULL则只需计算矩阵的秩
+// 在传入B时表示计算逆矩阵,传入NULL则只需计算矩阵的秩
 void Gauss(int A[][N], int B[][N], int n) {
   if (B) {
     memset(B, 0, sizeof(t));
