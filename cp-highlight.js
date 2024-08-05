@@ -120,7 +120,7 @@ const default_theme = {
   text: 'normal',
   keyword: 'bold',
   type: 'bold',
-  operator: 'normal',
+  operator: 'red',
   macro: 'green',
   comments: 'underlined',
   hinter: '→',

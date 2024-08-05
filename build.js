@@ -81,7 +81,7 @@ async function render(sourceFile) {
   const { docs, code } = parseDocHeader(source);
   let header = '';
   header += '#import "' + path.relative(path.dirname(sourceFile), path.join(__dirname, './src/template.typ')).replace(/\\/g, '/') + '": *\n';
-  if (options.description) {
+  if (docs.description) {
     header += '#desc ' + docs.description + '\n\n';
   }
   if (options.detailed) {
