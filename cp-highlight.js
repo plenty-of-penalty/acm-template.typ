@@ -2,7 +2,7 @@
  * cp-highlight.js
  *
  * @author memset0s
- * @version 0.4.0
+ * @version 0.4.1
  * @date 20240804
  */
 
@@ -120,7 +120,7 @@ const default_theme = {
   text: 'normal',
   keyword: 'bold',
   type: 'bold',
-  operator: 'red',
+  operator: 'normal',
   macro: 'green',
   comments: 'underlined',
   hinter: '→',
@@ -159,14 +159,14 @@ const typstAdapter = function (data, theme) {
   let result = '';
   result += '#{\n';
   result += theme.header + '\n';
-  result += 'let T(x) = text(x)\n';
-  result += 'let Y(x) = text(x, fill: luma(160))\n';
-  result += 'let R(x) = text(x, fill: color.red)\n';
-  result += 'let G(x) = text(x, fill: color.green)\n';
-  result += 'let B(x) = text(x, fill: color.blue)\n';
-  result += 'let S(x) = text(x, weight: 900)\n';
-  result += 'let I(x) = text(x)\n';
-  result += 'let U(x) = underline(stroke: 1pt, offset: 2pt, text(x))\n';
+  result += 'let T(x)=text(x)\n';
+  result += 'let Y(x)=text(x,fill:luma(160))\n';
+  result += 'let R(x)=text(x,fill:rgb(214,57,72))\n';
+  result += 'let G(x)=text(x,fill:rgb(40,142,12))\n';
+  result += 'let B(x)=text(x,fill:rgb(75,105,197))\n';
+  result += 'let S(x)=text(x,weight: 900)\n';
+  result += 'let I(x)=text(x)\n';
+  result += 'let U(x)=underline(stroke:1pt,offset:2pt,text(x))\n';
   for (const item of data) {
     result +=
       table[item.style] +
@@ -175,7 +175,7 @@ const typstAdapter = function (data, theme) {
         .replace(/\\/g, '\\\\') //
         .replace(/\n/g, '\\n') //
         .replace(/\"/g, '\\"') +
-      '")\n';
+      '");';
   }
   result += theme.footer + '\n';
   result += '}';
@@ -277,8 +277,8 @@ function render(source, lineLimit, lang, theme) {
         let len = isChineseChar(char) ? theme.cnLen : 1;
         if (remain < len) {
           push_back('space', '\n' + ' '.repeat(indent + theme.extend));
-          push_back('grey', theme.hinter + ' ');
-          remain = lineLimit - indent - theme.extend - theme.hinterLen - 1;
+          push_back('grey', theme.hinter);
+          remain = lineLimit - indent - theme.extend - theme.hinterLen;
         }
         push_back(style, char);
         remain -= len;

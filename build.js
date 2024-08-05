@@ -8,14 +8,11 @@ const sourceDir = path.join(__dirname, './src');
 const sourceFilter = (file) => path.extname(file) === '.cpp' || path.extname(file) === '.hpp';
 
 const options = {
-  lineLimit: 59,
-  cnLen: 1.6,
+  detailed: false, // options for this script
+  lineLimit: 54,
+  cnLen: 1.5,
   theme: {
-    header: [
-      'let font-sans-serif = ("Helvetica","Arial","Source Han Sans","Source Han Sans SC","Hiragino Sans GB","Noto Sans CJK SC","Heiti")', //
-      'let font-mono = ("Consolas",..font-sans-serif)',
-      'set text(font: font-mono, size: 8pt)',
-    ].join('\n'),
+    header: ['set text(font:font-mono,size:8pt)'].join('\n'),
     footer: [].join('\n'),
   },
 };
@@ -40,14 +37,61 @@ async function scanDir(dirPath) {
     .filter(sourceFilter);
 }
 
+function parseDocHeader(code) {
+  const match = code.match(/^\s*?\/\*\*([\s\S]*?)\*\/\s*/);
+  if (!match) {
+    return { docs: {}, code };
+  }
+  code = code.slice(match[0].length);
+  const lines = match[1].split('\n');
+  const dict = {};
+  for (let line of lines) {
+    line = line.trim();
+    if (line.startsWith('* @')) {
+      const tagLine = line.substring(3);
+      const tagParts = tagLine.split(' ');
+      const tagName = tagParts[0].endsWith(':') ? tagParts[0].slice(0, -1) : tagParts[0];
+      tagParts.shift();
+      if (tagName === 'param') {
+        const typeMatch = tagParts[0].match(/{(.*)}/);
+        tagParts.shift();
+        const paramName = tagParts[0];
+        tagParts.shift();
+        if (!dict[tagName]) {
+          dict[tagName] = [];
+        }
+        dict[tagName].push({
+          name: paramName,
+          type: typeMatch ? typeMatch[1] : null,
+          description: tagParts.join(' '),
+        });
+      } else {
+        dict[tagName] = tagParts.join(' ');
+      }
+    }
+  }
+  return { docs: dict, code };
+}
+
 async function render(sourceFile) {
   if (!fs.existsSync(sourceFile)) {
     return;
   }
-  const source = (await fs.promises.readFile(sourceFile)).toString();
+  const source = (await fs.promises.readFile(sourceFile)).toString().replace(/\r/g, '');
+  const { docs, code } = parseDocHeader(source);
+  let header = '';
+  header += '#import "' + path.relative(path.dirname(sourceFile), path.join(__dirname, './src/template.typ')).replace(/\\/g, '/') + '": *\n';
+  if (options.description) {
+    header += '#desc ' + docs.description + '\n\n';
+  }
+  if (options.detailed) {
+    if (docs.author) {
+      header += '#author ' + docs.author + '\n\n';
+    }
+  }
 
   let flagHasNamespace = false;
-  const lines = source.replace(/\r/g, '').split('\n');
+  const lines = code.split('\n');
   for (let l = 0, r = 0; l < lines.length; l = r + 1, r = l) {
     if (lines[l].startsWith('namespace ') && lines[l].endsWith('{')) {
       const namespace = lines[l].slice(10, -2);
@@ -55,11 +99,8 @@ async function render(sourceFile) {
         ++r;
       }
       flagHasNamespace = true;
-      const resultFile =
-        sourceFile + //
-        (namespace == 'stdlib' ? '' : '.' + namespace) + //
-        '.code.typ';
-      const result = fullRender(lines.slice(l + 1, r).join('\n'), options);
+      const resultFile = sourceFile + (namespace == 'stdlib' ? '' : '.' + namespace) + '.code.typ';
+      const result = header + fullRender(lines.slice(l + 1, r).join('\n'), options);
       console.log('[render]', resultFile);
       await fs.promises.writeFile(resultFile, result);
     }
@@ -67,7 +108,7 @@ async function render(sourceFile) {
 
   if (!flagHasNamespace) {
     const resultFile = sourceFile + '.code.typ';
-    const result = fullRender(source, options);
+    const result = header + fullRender(code, options);
     console.log('[render]', resultFile);
     await fs.promises.writeFile(resultFile, result);
   }
@@ -129,6 +170,10 @@ async function watch() {
 }
 
 if (require.main == module) {
+  if (process.argv.includes('--detailed')) {
+    options.detailed = true;
+  }
+
   if (process.argv.includes('--watch')) {
     watch();
   } else {
