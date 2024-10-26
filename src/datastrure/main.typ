@@ -52,3 +52,5 @@
 == 分块
 
 == 莫队
+
+#source("datastrure/莫队.cpp")

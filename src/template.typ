@@ -74,7 +74,7 @@
 }
 
 
-#let project(title: "", authors: (), special_thanks: (), body) = {
+#let project(title: "", authors: (), special_thanks: (), body, comment: none) = {
   set document(author: authors, title: title)
   set page(
     margin: (left: 8mm, right: 8mm, top: 12mm, bottom: 8mm),
@@ -197,12 +197,17 @@
     strong("Special Thanks to: ")
     special_thanks
 
+      set align(center)
     v(1em)
-    set align(center)
-    set text(size: 1.1em, weight: 800)
-    [
-      Good Luck & Have Fun!
-    ]
+    {
+      set text(size: 1.1em, weight: 800)
+      [Good Luck & Have Fun!]
+    }
+    
+    if (comment != none) {
+      set text(size: 1.05em, weight: 800)
+      comment
+    }
   }
   pagebreak(weak: true)
   {

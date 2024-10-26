@@ -14,6 +14,10 @@
     Antileaf,
     and seniors from _Zhejiang University_.
   ],
+  comment: [
+    #v(0.5em)
+    2024/10/26-27 CCPC Jinan Site
+  ],
 )
 
 = 基础

@@ -45,8 +45,10 @@
 #source("math/polynom/多项式.cpp", namespace: "polynom_exp")
 
 === 多项式多点求值
+#source("math/polynom/多点求值.cpp")
 
 === 多项式快速插值
+#source("math/polynom/快速插值.cpp")
 
 === NTT（add10k）
 #source("math/polynom/多项式-wh.cpp", namespace: "polynom")
@@ -57,3 +59,6 @@
 == 杂项
 
 === 杨氏矩阵
+
+=== 二次剩余
+#source("math/cipolla.cpp")
